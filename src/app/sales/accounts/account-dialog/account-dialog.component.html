@@ -1,0 +1,194 @@
+<h1 mat-dialog-title><span *ngIf="!account.id">Add</span><span *ngIf="account.id">Edit</span> Account</h1>
+<mat-horizontal-stepper #stepper>
+        <mat-step>
+          <div mat-dialog-content>
+            <form class="form-horizontal" name="addProspects">
+              <ng-template matStepLabel>Basic Details</ng-template>
+              <div class="form-group">
+                <label class="control-label col-sm-4 add-member-label">Account :</label>
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                  <input type="text" class="form-control" id="email" placeholder="Enter Prospects Name">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-4 add-member-label">Contact Number:</label>
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                  <input type="text" class="form-control" id="email" placeholder="Enter Contact Number">
+                </div>
+              </div>
+              <div class="form-group">
+                  <label class="control-label col-sm-4 add-member-label">Industry : </label>
+                  <div class="col-sm-8">
+                      <select name="industry"  class='form-control' required>
+                          <option Value="" selected>--Select Industry--</option>
+                          <option class='option' *ngFor='let option of industryOptions' [value]="option">{{option}}</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-4 add-member-label">Email:</label>
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                  <input type="text" class="form-control" id="email" placeholder="Enter Email">
+                </div>
+              </div>
+              <div class="form-group">
+                  <label class="control-label col-sm-4 add-member-label">Research Analyst : </label>
+                  <div class="col-sm-8">
+                      <select name="industry"  class='form-control' required>
+                          <option Value="" selected>--Select Research Analyst --</option>
+                          <option class='option' *ngFor='let option of raOptions' [value]="option">{{option}}</option>
+                      </select>
+                  </div>
+              </div>
+              <!-- <div class="form-group">
+                <label class="control-label col-sm-4" for="pwd">Industry:</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" placeholder="Enter Industry">
+                </div>
+              </div> -->
+            </form>
+          </div>
+      
+          <mat-dialog-actions align="end">
+            <button mat-raised-button class="add-hover btn-success" matStepperNext>Proceed</button>
+            <button mat-raised-button class="add-dark-hover btn-default" (click)="close()">Cancel</button>
+          </mat-dialog-actions>
+        </mat-step>
+      
+        <mat-step>
+            <div mat-dialog-content>
+                <form class="form-horizontal">
+                    <ng-template matStepLabel>Address Details</ng-template>
+      
+                    <div class="form-group">
+                        <label class="control-label col-sm-4 add-member-label" for="pwd">ZIP Code : </label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" placeholder="Enter postal code" required>
+                        </div>
+                    </div>
+      
+                    <div class="form-group">
+                        <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4 add-member-label">Country : </label>
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                        <input type="text" class="form-control" placeholder="" disabled required>
+                        <!-- <select class='form-control' formControlName="country" name="Select Location" (ngModelChange)='getLocationStates(leadContactDetailsForm.value.country)' required>
+                            <option value="" selected>--Select Country--</option>
+                            <option class='option' *ngFor='let option of countryList' [value]="option.country_short_code">{{option.country_name}}</option>
+                        </select> -->
+                        
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4 add-member-label">State / Province : </label>
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                        <input type="text" disabled class="form-control" placeholder="" required>
+                        <!-- <select class='form-control' formControlName="state" name="Select Location" (ngModelChange)='getLocationCities(leadContactDetailsForm.value.country, leadContactDetailsForm.value.state)' required>
+                            <option value="" selected>--Select State--</option>
+                            <option class='option' *ngFor='let option of stateList' [value]="option.state_name">{{option.state_name}}</option>
+                        </select> -->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4 add-member-label">City : </label>
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                        <input type="text" class="form-control" disabled placeholder="" required>
+                        <!-- <select class='form-control' formControlName="city" name="Select Location" (ngModelChange)='getLocationId(leadContactDetailsForm.value.country, leadContactDetailsForm.value.state, leadContactDetailsForm.value.city)' required>
+                            <option value="" selected>--Select City--</option>
+                            <option class='option' *ngFor='let option of cityList' [value]="option.city_name">{{option.city_name}}</option>
+                        </select> -->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4 add-member-label" for="pwd">Contact Address : </label>
+                        <div class="col-sm-8">
+                            <textarea class="form-control txtarea" rows="2" placeholder="Enter contact address" required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4 add-member-label">Time Zone : </label>
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                        <select class='select-option form-control ' required [(ngModel)]='timeOptionSelected' (ngModelChange)='onTimeOptionsSelected($event)' name="Select Time Zone">
+                            <option class='option' [ngValue]="undefined" selected disabled  >--Select Time-Zone--</option>
+                            <option class='option' *ngFor='let option of timeOptions' [value]="option">{{option}}</option>
+                        </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <mat-dialog-actions align="end">
+                <button mat-raised-button class="btn-success" matStepperNext>Proceed</button>
+                <button mat-raised-button class="add-dark-hover btn-default" matStepperPrevious>Back</button>
+            </mat-dialog-actions>
+        </mat-step>
+      
+        <mat-step>
+            <div mat-dialog-content>
+                <form class="form-horizontal">
+                    <ng-template matStepLabel>Primary Contact</ng-template>
+      
+                    <div class="form-group">
+                      <label class="control-label col-sm-4 add-member-label">Contact Person</label>
+                      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                        <input type="text" class="form-control" id="email" placeholder="Enter Contact Person Name">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-sm-4 add-member-label">Designation</label>
+                      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                        <input type="text" class="form-control" id="email" placeholder="Enter Designation">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-sm-4 add-member-label">Contact Number:</label>
+                      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                        <input type="text" class="form-control" id="email" placeholder="Enter Contact Number">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-sm-4 add-member-label">Email ID:</label>
+                      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                        <input type="text" class="form-control" id="email" placeholder="Enter Email">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4 add-member-label">Country : </label>
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                        <select class='select-option form-control ' required [(ngModel)]='countryOptionSelected' (ngModelChange)='onCountryOptionsSelected($event)' name="Select Time Zone">
+                            <option class='option' [ngValue]="undefined" selected disabled  >--Select Country--</option>
+                            <option class='option' *ngFor='let option of countryOptions' [value]="option">{{option}}</option>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4 add-member-label">State : </label>
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                        <select class='select-option form-control ' required [(ngModel)]='stateOptionSelected' (ngModelChange)='onStateOptionsSelected($event)' name="Select Time Zone">
+                            <option class='option' [ngValue]="undefined" selected disabled  >--Select State--</option>
+                            <option class='option' *ngFor='let option of stateOptions' [value]="option">{{option}}</option>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4 add-member-label">City : </label>
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                        <select class='select-option form-control ' required [(ngModel)]='cityOptionSelected' (ngModelChange)='onCityOptionsSelected($event)' name="Select Time Zone">
+                            <option class='option' [ngValue]="undefined" selected disabled  >--Select City--</option>
+                            <option class='option' *ngFor='let option of cityOptions' [value]="option">{{option}}</option>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4 add-member-label" for="pwd">Contact Address : </label>
+                        <div class="col-sm-8">
+                            <textarea class="form-control txtarea" rows="2" placeholder="Enter contact address" required></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <mat-dialog-actions align="end">
+                <button mat-raised-button class="add-hover" class="btn-success" (click)="saveAccount()"><span *ngIf="!account.id">Save</span><span
+                        *ngIf="account.id">Update</span></button>
+                <button mat-raised-button class="add-dark-hover btn-default" matStepperPrevious>Back</button>
+            </mat-dialog-actions>
+        </mat-step>
+      </mat-horizontal-stepper>

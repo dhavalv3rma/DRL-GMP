@@ -1,0 +1,84 @@
+<h1 mat-dialog-title>
+    <!-- <span *ngIf="!oppurtunity.id">Add</span>
+    <span *ngIf="oppurtunity.id">Edit</span> Contact</h1> -->
+    Add Asset schedule
+    <hr>
+    <div mat-dialog-content>
+        <form  class="form-horizontal">
+                <div class="form-group">
+                        <label class="col-sm-4 add-member-label"><span style="font-size: 15px">Subject</span></label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" formControlName="title" placeholder="Enter Title">
+                        </div>
+                    </div>
+            <div class="form-group">
+                <label class="col-sm-4 add-member-label"><span style="font-size: 15px">From Date:</span></label>
+                <div class="col-sm-8">
+                    <input type="text"formControlName="start" class='select-option form-control' placeholder="From Date" onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-4"><span style="font-size: 15px">To Date:</span></label>
+                <div class="col-sm-8">
+                    <input type="text"formControlName="end" class='select-option form-control' placeholder="From Date" onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}">
+                </div>
+            </div>
+            <div class="form-group">
+                    <label class="control-label col-sm-4 add-member-label"><span style="font-size: 15px">Asset:</span></label>
+                    <div class="col-sm-8">
+                            <mat-select multiple placeholder="--Select Asset--" class='select-option form-control'>
+                                    <mat-option [value]="1">Cosmolabe</mat-option>
+                                    <mat-option [value]="2">Dioptra</mat-option>
+                                    <mat-option [value]="3">Tachymeter</mat-option>
+                                    <mat-option [value]="4">Graphometer</mat-option>
+                                    <mat-option [value]="5">Total station</mat-option>
+                                </mat-select>
+                    </div>
+                </div>
+            <div class="form-group">
+                <label class="control-label col-sm-4 add-member-label"><span style="font-size: 15px">Party Chief:</span></label>
+                <div class="col-sm-8">
+                        <mat-select class='select-option form-control' placeholder="--Select Party Chief--">
+                                <mat-option [value]="1">Damian</mat-option>
+                                <mat-option [value]="2">Thomas</mat-option>
+                                <mat-option [value]="3">David</mat-option>
+                            </mat-select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-4 add-member-label"><span style="font-size: 15px">Field Assistant (s):</span></label>
+                <div class="col-sm-8">
+                        <mat-select multiple class='select-option form-control' placeholder="--Select Field Assistant--">
+                                <mat-option [value]="1">Jake</mat-option>
+                                <mat-option [value]="2">Connor</mat-option>
+                                <mat-option [value]="3">Callum</mat-option>
+                            </mat-select>
+                </div>
+            </div>
+            <div class="form-group">
+                    <label class="control-label col-sm-4 add-member-label"><span style="font-size: 15px">Select Color:</span></label>
+                    <div class="col-sm-8">
+                            <mat-select class='select-option form-control' placeholder="--Select Color--">
+                                    <mat-option [value]="1"><i class="fa fa-circle dot-menu red"></i> &nbsp;Red</mat-option>
+                                    <mat-option [value]="2"><i class="fa fa-circle dot-menu green"></i> &nbsp;Green</mat-option>
+                                    <mat-option [value]="3"><i class="fa fa-circle dot-menu blue"></i> &nbsp;Blue</mat-option>
+                                    <mat-option [value]="4"><i class="fa fa-circle dot-menu pink"></i> &nbsp;Pink</mat-option>
+                                    <mat-option [value]="5"><i class="fa fa-circle dot-menu gray"></i> &nbsp;Gray</mat-option>
+                                    <mat-option [value]="6"><i class="fa fa-circle dot-menu yellow"></i> &nbsp;Yellow</mat-option>
+
+                                </mat-select>
+                    </div>
+                </div>
+
+        </form>
+    </div>
+
+    <mat-dialog-actions align="end">
+            <button mat-raised-button class="add-hover btn-success" [disabled]="!form.valid" color="primary" [mat-dialog-close]="form.value" ><span *ngIf="!form.controls.isEdit.value">Schedule</span><span *ngIf="form.controls.isEdit.value">Update</span></button>
+        <!-- <button mat-raised-button class="add-hover btn-success" (click)="saveOpp()">Save -->
+            <!-- <span *ngIf="!oppurtunity.id">Save</span>
+            <span *ngIf="oppurtunity.id">Update</span>
+        </button> -->
+        <button mat-raised-button class="add-dark-hover btn-default" (click)="close()">Cancel</button>
+
+    </mat-dialog-actions>

@@ -1,0 +1,386 @@
+<div fxLayout="row wrap" >
+        <div class="w-100">
+                <div class="flex-p">
+                        <div class="row wrap">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <div class="w-100 flex-p">
+                                    </div>
+                                </div>
+                                <div class="col-xs-6"  style="margin-right:0px !important">
+                                    
+                                        <button mat-raised-button class="add-hover pull-right btn-success" (click)="openleadDialog(null)">
+                                            <mat-icon>person_add</mat-icon> Add
+                                            Lead
+                                        </button>
+                                    
+                                </div>
+                            </div>
+                </div>
+                    <div class="row ">
+                        <div class="col-xs-6">
+                        </div> 
+                    </div>
+
+                <div fxLayout="row wrap" *ngIf="filterToggle">
+                    <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p w-100">
+                        <mat-card class="filter">
+                            <!-- <mat-card-header>
+                                <mat-card-subtitle> <b>Filter</b></mat-card-subtitle>
+                            </mat-card-header> -->
+                            <mat-card-content>
+                                <div class="row">
+                                    <div class="col-lg-2">
+                                        <select class='select-option form-control' required [(ngModel)]='campaignOptionSelected' (ngModelChange)='onCampaignOptionsSelected($event)'>
+                                            <option class='option' [ngValue]="undefined" selected disabled  >--Search by Campaign--</option>
+                                            <option class='option' *ngFor='let option of campaignOptions' [value]="option">{{option}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <select class='select-option form-control' required [(ngModel)]='prospectOptionSelected' (ngModelChange)='onProspectOptionsSelected($event)'>
+                                            <option class='option' [ngValue]="undefined" selected disabled  >--Search by Prospects--</option>
+                                            <option class='option' *ngFor='let option of prospectsOptions' [value]="option">{{option}}</option>
+                                        </select>
+                                    </div>
+                                    <!-- <div class="col-lg-2">
+                                        <select class='select-option form-control' required [(ngModel)]='monthOptionSelected' (ngModelChange)='onMonthOptionsSelected($event)'>
+                                            <option class='option' [ngValue]="undefined" selected disabled  >--Search by month--</option>
+                                            <option class='option' *ngFor='let option of monthOptions' [value]="option">{{option}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <select class='select-option form-control' required [(ngModel)]='yearOptionSelected' (ngModelChange)='onYearOptionsSelected($event)'>
+                                            <option class='option' [ngValue]="undefined" selected disabled  >--Search by year--</option>
+                                            <option class='option' *ngFor='let option of yearOptions' [value]="option">{{option}}</option>
+                                        </select>
+                                    </div> -->
+                                    <div class="col-lg-1">
+                                        <button type="button" class="btn btn-success  pull-right">Search</button>
+                                    </div>
+                                    <div class="col-lg-2"></div>
+                                
+                                </div>
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
+                </div>
+                <div fxLayout="row wrap" style="margin: 0px -6px 0px -6px;">
+                    <div *ngFor="let lead of leads | paginate: { itemsPerPage: 8, currentPage: page }" fxFlex="100"
+                        fxFlex.gt-md="33.3" fxFlex.md="50" class="flex-p">
+                        <!-- <mat-card class="p-0">
+                            <div class="bg-primary" fxLayout="row" fxLayoutAlign="space-between center">
+                                <h4 *ngIf="!lead.settings.isDeleted" class="lead-name">{{lead.profile.name}}
+                                    {{lead.profile.surname}}</h4>
+                                <h4 *ngIf="lead.settings.isDeleted" class="lead-name">lead blocked</h4>
+                                <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="!campaign.settings.isDeleted" #menuTrigger="matMenuTrigger">
+                                    <mat-icon>more_vert</mat-icon>
+                                </button>
+                            </div>
+                            <mat-menu #menu="matMenu" xPosition="before" overlapTrigger="true">
+                                <span (mouseleave)="menuTrigger.closeMenu()">
+                                    <button mat-menu-item (click)="openleadDialog(lead)">
+                                        <mat-icon>mode_edit</mat-icon>
+                                        <span>Edit</span>
+                                    </button>
+                                    <button mat-menu-item (click)="deletelead(lead);">
+                                        <mat-icon>delete</mat-icon>
+                                        <span>Delete</span>
+                                    </button>
+                                </span>
+                            </mat-menu>
+                            <div class="lead-content" fxLayout="row" fxLayoutAlign="space-around center">
+                                <div fxFlex="30" fxLayout="column" fxLayoutAlign="center center">
+                                    <div class="lead-img">
+                                        <img *ngIf="lead.profile.image" [src]="lead.profile.image" class="transition-2"
+                                            [class.blocked]="lead.settings.isDeleted">
+                                        <img *ngIf="!lead.profile.image" src="assets/img/leads/default-lead.jpg" class="transition-2"
+                                            [class.blocked]="lead.settings.isDeleted">
+                                        <mat-icon *ngIf="lead.settings.isDeleted" class="warn-color">block</mat-icon>
+                                    </div>
+                                    <div class="lead-social">
+                                        <mat-slide-toggle color="primary" [checked]="lead.settings.isDeleted" (change)="lead.settings.isDeleted = !lead.settings.isDeleted"></mat-slide-toggle>
+                                    </div>
+                                </div>
+                                <div fxFlex="70" fxLayout="column" class="lead-details transition-2" [class.blocked]="lead.settings.isDeleted">
+                                    <p fxLayout="row" fxLayoutAlign="start center">
+                                        <mat-icon class="muted-text">card_membership</mat-icon><span>{{lead.work.position}}</span>
+                                    </p>
+                                    <p fxLayout="row" fxLayoutAlign="start center">
+                                        <mat-icon class="muted-text">mail_outline</mat-icon>
+                                        <span>{{lead.contacts.email}}</span>
+                                    </p>
+                                    <p fxLayout="row" fxLayoutAlign="start center">
+                                        <mat-icon class="muted-text">call</mat-icon>
+                                        <span>{{lead.contacts.phone}}</span>
+                                    </p>
+                                    <p fxLayout="row" fxLayoutAlign="start center">
+                                        <mat-icon class="muted-text">location_on</mat-icon>
+                                        <span>{{lead.contacts.address}}</span>
+                                    </p>
+                                    <p fxLayout="row" fxLayoutAlign="start center">
+                                        <mat-icon class="muted-text">date_range</mat-icon>
+                                        <span>Joined {{lead.settings.joinedDate | date:"dd MMMM, yyyy 'at' HH:mm"}}</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </mat-card> -->
+
+
+                        <mat-card class="p-0">
+                            <div class="bg-primary" fxLayout="row" fxLayoutAlign="space-between center">
+                                <h4 *ngIf="!lead.settings.isDeleted" class="lead-details">{{lead.work.company}}</h4>
+                                <h4 *ngIf="lead.settings.isDeleted" class="lead-details" style="color:#ff6666">{{lead.work.company}}</h4>
+                                <h4 *ngIf="lead.settings.isDeleted" class="lead-details" style="color:white">(Lead blocked)</h4>
+                                <button [hidden] ="lead.settings.isDeleted" mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger">
+                                    <mat-icon>more_vert</mat-icon>
+                                </button>
+                            </div>
+                            <mat-menu #menu="matMenu" xPosition="before" overlapTrigger="true">
+                                <span (mouseleave)="menuTrigger.closeMenu()">
+                                    <button mat-menu-item (click)="openleadDialog(lead)">
+                                        <mat-icon>mode_edit</mat-icon>
+                                        <span>Edit</span>
+                                    </button>
+                                    <button mat-menu-item (click)="openConfirmDialog('delete',true,'lead');">
+                                        <mat-icon>delete</mat-icon>
+                                        <span>Delete</span>
+                                    </button>
+                                </span>
+                            </mat-menu>
+                            <div class="lead-content table-responsive flex-p" fxLayout="row" fxLayoutAlign="space-around center">
+                                <div fxFlex="20" fxLayout="column" fxLayoutAlign="center center">
+                                    <div class="lead-img">
+                                        <img *ngIf="lead.profile.image" [src]="lead.profile.image" class="transition-2"
+                                            [class.blocked]="lead.settings.isDeleted">
+                                        <img *ngIf="!lead.profile.image" src="assets/img/leads/default-lead.jpg" class="transition-2"
+                                            [class.blocked]="lead.settings.isDeleted">
+                                        <mat-icon *ngIf="lead.settings.isDeleted" class="warn-color">block</mat-icon>
+                                    </div>
+                                    <div class="lead-social">
+                                        <mat-slide-toggle color="primary" [checked]="lead.settings.isDeleted" (change)="openConfirmDialog('status',!lead.settings.isDeleted,'lead'); lead.settings.isDeleted = !lead.settings.isDeleted"></mat-slide-toggle>
+                                    </div>
+                                </div>
+                                <div fxFlex="80" fxLayout="column" class="lead-details transition-2" [class.blocked]="lead.settings.isDeleted">
+                                        <p fxLayout="row" fxLayoutAlign="start center">
+                                        <span class="col-lg-4">
+                                            <b>Lead</b>
+                                        </span>
+                                        <span class="col-lg-1">:</span>
+                                        <!-- <mat-icon class="muted-text">person</mat-icon> -->
+                                        <span class="col-lg-7">
+                                        <span>{{lead.profile.name}} {{lead.profile.surname}}</span>
+                                    </span>
+                                    </p>
+                                    <p fxLayout="row" fxLayoutAlign="start center">
+                                            <span class="col-lg-4">
+                                                    <b>Designation</b>
+                                            </span>
+                                            <span class="col-lg-1">:</span>
+                                            <!-- <mat-icon class="muted-text">card_membership</mat-icon> -->
+                                            <span class="col-lg-7">
+                                        <span>{{lead.work.position}}</span>
+                                    </span>
+                                    </p>
+                                    <p fxLayout="row" fxLayoutAlign="start center">
+                                            <span class="col-lg-4">
+                                                    <b>Email</b>
+                                            </span>
+                                            <span class="col-lg-1">:</span>
+                                        <!-- <mat-icon class="muted-text">mail_outline</mat-icon> -->
+                                        <span class="col-lg-7">
+                                        <span>{{lead.contacts.email}}</span>
+                                        </span>
+                                    </p>
+                                    <p fxLayout="row" fxLayoutAlign="start center">
+                                            <span class="col-lg-4">
+                                                    <b>Contact</b>
+                                            </span>
+                                            <span class="col-lg-1">:</span>
+                                        <!-- <mat-icon class="muted-text">call</mat-icon> -->
+                                        <span class="col-lg-7">
+                                        <span>{{lead.contacts.phone}}</span>
+                                        </span>
+                                    </p>
+                                    <p fxLayout="row" fxLayoutAlign="start center">
+                                            <span class="col-lg-4">
+                                                    <b>Location</b>
+                                            </span>
+                                            <span class="col-lg-1">:</span>
+                                        <!-- <mat-icon class="muted-text">location_on</mat-icon> -->
+                                        <span class="col-lg-7">
+                                        <span>{{lead.contacts.address}}</span>
+                                        </span>
+                                    </p>
+                                    <!-- <p fxLayout="row" fxLayoutAlign="start center">
+                                            <span class="col-lg-4">
+                                                    <b>Status</b>
+                                            </span>
+                                            <span class="col-lg-1">:</span>
+                                        <mat-icon class="muted-text">location_on</mat-icon>
+                                        <span class="col-lg-7">
+                                        <span><mat-slide-toggle color="primary" [checked]="lead.settings.isDeleted" (change)="lead.settings.isDeleted = !lead.settings.isDeleted"></mat-slide-toggle></span>
+                                        </span>
+                                    </p> -->
+                                
+
+                                    
+                                    <!-- <p fxLayout="row" fxLayoutAlign="start center">
+                                            <mat-icon class="muted-text">date_range</mat-icon>
+                                            <span>Joined {{lead.settings.joinedDate | date:"dd MMMM, yyyy 'at' HH:mm"}}</span>
+                                        </p> -->
+                                </div>
+                            </div>
+                        </mat-card>
+                    </div>
+                </div>
+
+        <!-- 
+        <div class="table-responsive">
+            <table id="example2" class="table table-bordered table-hover table-striped">
+                <thead class="tbl-head">
+                    <tr class="tr-grid-header">
+                        <th>Company Name</th>
+                        <th>Location</th>
+                        <th>Contact Person</th>
+                        <th>Contact Number</th>
+                        <th style="text-align: center">Time line</th>
+                        <th>Industry</th>
+                        <th style="text-align: center">Prospects</th>
+                        <th style="text-align:center;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of tableList">
+                        <td>{{item.companyName}}</td>
+                        <td>{{item.Location}}</td>
+                        <td>{{item.contactPerson}}</td>
+                        <td>{{item.contactNumber}}</td>
+                        <td style="text-align: center"> <a title="View timeline" style=" cursor: pointer;color: steelblue;">
+                                {{item.timeline}}</a> </td>
+                        <td>{{item.Industry}}</td>
+                        <td style="text-align: center"><a title="View Prospects" style=" cursor: pointer;color: steelblue;">{{item.prospects}}</a></td>
+                        <td style="text-align: center">
+                            <a (click)="smModal.show()" style="margin-right: 10px; cursor: pointer;">
+                                <i title="Edit" class="fa fa-edit"></i>
+                            </a>
+                            <a style="cursor: pointer;" (click)="deleteModal.show()">
+                                <i title="Delete" style="color:red;" class="fa fa-trash"></i>
+                            </a>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div> -->
+        </div>
+</div>
+
+<div *ngIf="leads" fxLayout="row wrap">
+    <div fxFlex="100" class="flex-p">
+        <mat-card class="p-0 text-center">
+            <pagination-controls class="gradus-pagination" autoHide="true" maxSize="3" (pageChange)="onPageChanged($event)"></pagination-controls>
+        </mat-card>
+    </div>
+</div>
+
+<div *ngIf="!leads" fxLayout="column" fxLayoutAlign="center center" class="lead-spinner">
+    <mat-spinner color="primary"></mat-spinner>
+</div>
+
+
+
+
+<!--Add lead modal-->
+
+<div bsModal #smModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" style="z-index:5000 !important;opacity:1"
+    aria-labelledby="dialog-sizes-name2">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="dialog-sizes-name2" class="modal-title pull-left">Add Leads</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="smModal.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" action="/action_page.php">
+                    <div class="form-group">
+                        <label class="control-label col-sm-4">Company Name:</label>
+                        <div class="col-sm-8">
+                            <input type="email" class="form-control" id="email" placeholder="Enter Company Name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4">Location:</label>
+                        <div class="col-sm-8">
+                            <input type="email" class="form-control" id="email" placeholder="Enter Location">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="pwd">Contact Person:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" placeholder="Enter contact person name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="pwd">Contact Number:</label>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control" placeholder="Enter Contact Number">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="pwd">Timeline Value:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" placeholder="Enter Timeline Value">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="pwd">Industry:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" placeholder="Enter Industry">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="pwd">Prospects:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" placeholder="Enter Prospects">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+
+                <button mat-raised-button class="btn-success" (click)="smModal.hide()">Save</button>
+                <button mat-raised-button class="btn-default" (click)="smModal.hide()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--Delete modal-->
+
+<div bsModal #deleteModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" style="z-index:5000 !important;opacity:1"
+    aria-labelledby="dialog-sizes-name2">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="dialog-sizes-name2" class="modal-title pull-left">Delete Confirmation</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="deleteModal.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-sm-12">
+                    <div class="row">
+                        <h3>Are you sure you want to delete ?</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button mat-raised-button class="btn-danger" (click)="deleteModal.hide()">Yes</button>
+                <button mat-raised-button xlass="btn-default" (click)="deleteModal.hide()">No</button>
+            </div>
+        </div>
+    </div>
+</div>

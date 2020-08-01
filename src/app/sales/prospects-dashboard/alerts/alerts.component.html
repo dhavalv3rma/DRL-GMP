@@ -1,0 +1,39 @@
+
+<div style="margin-top:12px;">
+      
+    <p>
+        <span style="font-size: 18px;font-weight: bold;">Alerts History:</span>
+    </p>
+  <mgl-timeline [toggle]="toggle" [alternate]="alternate">
+    <mgl-timeline-entry *ngFor="let entry of entries; let i = index;" (expand)="onExpandEntry($event, i)">
+      <mgl-timeline-entry-header [class] = 'entry.headerClass' (click)="onHeaderClick($event)">
+        <div style="margin-bottom:10px;"><i class="{{entry.element}}" style="float: left">&nbsp;&nbsp;&nbsp;</i><b style="float: left">{{entry.header}}</b>&nbsp;&nbsp;&nbsp;&nbsp;<b style="float: right">{{entry.date}}</b></div>
+        <div><p style="float: left;"><i class="{{entry.dataelement}}" style="float: left">&nbsp;&nbsp;&nbsp;</i>{{entry.content}}</p></div>
+      </mgl-timeline-entry-header>
+      
+      <mgl-timeline-entry-dot [class]="entry.class"
+      [size]="size"
+      (click)="onDotClick($event)"></mgl-timeline-entry-dot>
+      <!-- <mgl-timeline-entry-side>2018</mgl-timeline-entry-side> -->
+    </mgl-timeline-entry>
+  </mgl-timeline>
+  </div>
+
+
+
+<!-- <div class="alerts-dialog" style="margin-top:8px;">
+
+    
+  <div class="alerts-heading col-sm-12">
+    <span>Alerts
+      <span>({{alertsCount}})</span>
+    </span>
+  </div>
+  <div class="col-sm-12 alerts-content">
+
+    <div *ngFor="let alert of alerts" class="alert" [ngClass]="[alert.alertClass]">
+      <span>{{alert.alertDescription}}</span>
+    </div>
+
+  </div>
+</div> -->

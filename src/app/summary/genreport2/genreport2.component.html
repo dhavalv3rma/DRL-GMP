@@ -1,0 +1,43 @@
+<div fxLayout="row wrap">
+  <div class="w-100">
+
+      <div class="table-responsive w-100 flex-p col-sm-12 mt-5" style="padding: 0px !important;">
+        <table id="example2" class="table table-bordered table-hover">
+          <thead class="tbl-head">
+            <tr class="tr-grid-header">
+              <th>Select</th>
+              <th>Section</th>
+              <th>Title</th>
+              <th>FTO</th>
+              <th>CTO</th>
+              <th>Biologics</th>
+              <th>Development Labs</th>
+              <th>Year 1</th>
+              <th>Year 2</th>
+            </tr>
+          </thead>
+          <tbody cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+            <tr *ngFor="let item of practice" cdkDrag>
+              <td><mat-checkbox class="m-auto"></mat-checkbox></td>
+              <td>{{item.section}}</td>
+              <td>{{item.title}}</td>
+              <td>{{item.fto}}</td>
+              <td>{{item.cto}}</td>
+              <td>{{item.bio}}</td>
+              <td>{{item.dev}}</td>
+              <td>{{item.year1}}</td>
+              <td>{{item.year2}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+     <a target="blank" href="../../../assets/IA_Annual_Summary_Report-2018.pdf"><button class="btn btn-success">Generate Report</button></a>
+     <button class="btn btn-success ml-4" (click)="openEmailDialog(null)" >Email Report</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- <div *ngIf="!leads" fxLayout="column" fxLayoutAlign="center center" class="lead-spinner">
+<mat-spinner color="primary"></mat-spinner>
+</div> -->

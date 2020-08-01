@@ -1,0 +1,169 @@
+
+
+<div class="">
+  
+  <div fxLayout="row wrap" *ngIf="filterToggle" style="margin-top: 25px">
+    <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p w-100">
+      <mat-card class="filter">
+        <mat-card-content>
+          <div class="row col-sm-12">
+            <div class="col-sm-4">
+              <div class="col-sm-4">Party Chief</div>
+              <div class="col-sm-8">
+                <mat-select class='select-option form-control' placeholder="--Select Party Chief--">
+                  <mat-option [value]="1">Damian</mat-option>
+                  <mat-option [value]="2">Thomas </mat-option>
+                  <mat-option [value]="3">David </mat-option>
+                </mat-select>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="col-sm-4">Field Assistant</div>
+              <div class="col-sm-8">
+                <mat-select class='select-option form-control' placeholder="--Select Field Assistant--">
+                  <mat-option [value]="1">Jake </mat-option>
+                  <mat-option [value]="2">Connor </mat-option>
+                  <mat-option [value]="3">Callum</mat-option>
+                </mat-select>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="col-sm-4">Assigned Asset</div>
+              <div class="col-sm-8">
+                <mat-select class='select-option form-control' placeholder="--Search by Asset--">
+                  <mat-option [value]="1">Cosmolabe</mat-option>
+                  <mat-option [value]="2">Dioptra</mat-option>
+                  <mat-option [value]="3">Tachymeter</mat-option>
+                  <mat-option [value]="4">Graphometer</mat-option>
+                  <mat-option [value]="5">Total station</mat-option>
+                </mat-select>
+              </div>
+            </div>
+          </div>
+          <div class="row col-sm-12" style="margin-top:20px">
+            <!-- <div class="col-sm-4">
+                            <div class="col-sm-4">Date Range For</div>
+                            <div class="col-sm-8">
+                                <select class='select-option form-control'>
+                                    <option class='option' [ngValue]="undefined" selected disabled>--Select Date Type--</option>
+                                    <option value="Engineer">Created Date</option>
+                                    <option value="Private">Last Active Date</option>
+                                </select>
+                            </div>
+  
+                        </div> -->
+            <div class="col-sm-4">
+              <div class="col-sm-4">From Date</div>
+              <div class="col-sm-8">
+                <input type="text" class='select-option form-control' placeholder="From Date" onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}">
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="col-sm-4">To Date</div>
+              <div class="col-sm-8">
+                <input type="text" class='select-option form-control' placeholder="To Date" onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}">
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <a (click)="filterToggle = !filterToggle" class="pull-right" style="font-size: 25px;">
+                <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+              </a>
+              <button mat-raised-button class="pull-right btn-success-gray" style="margin-right: 8px;background: #686968fa !important;color: white !important;">
+                <mat-icon>settings_backup_restore</mat-icon> Reset
+              </button>
+              <!-- <button mat-raised-button class="pull-right add-hover btn-success">
+                                    <mat-icon>cloud_download</mat-icon> Download CSV
+                                </button> -->
+              <button mat-raised-button color="primary" class="pull-right filters-hover margin-right-10">
+                <mat-icon>youtube_searched_for</mat-icon> Search
+              </button>
+            </div>
+          </div>
+          <!-- <div class="row col-sm-12" style="margin-top:20px">
+                    <div class="col-sm-4">
+                        <div class="col-sm-4">Keyword</div>
+                            <div class="col-sm-8">
+                                <input class="form-control" type="text">
+                            </div>
+  
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="col-sm-4">Flagged</div>
+                            <div class="col-sm-8">
+                                <input type="checkbox">
+                            </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <button mat-raised-button class="pull-right btn-success-gray" style="margin-right: 8px;background: #686968fa !important;color: white !important;">
+                            <mat-icon>settings_backup_restore</mat-icon> Reset
+                        </button>
+                        <button mat-raised-button class="pull-right add-hover btn-success">
+                                <mat-icon>cloud_download</mat-icon> Download CSV
+                            </button>
+                        <button mat-raised-button color="primary" class="pull-right filters-hover margin-right-10">
+                            <mat-icon>youtube_searched_for</mat-icon> Search
+                        </button>
+                    </div>
+  
+                </div> -->
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <div fxLayout="row wrap" style="margin-top: 20px">
+    <div fxFlex="100">
+      <mat-card class="block p-0">
+
+        <div class="bg-primary">
+          <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center" class="w-100">
+            <div class="">
+              <button mat-icon-button mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate">
+                <mat-icon *ngIf="!settings.rtl">chevron_left</mat-icon>
+                <mat-icon *ngIf="settings.rtl">chevron_right</mat-icon>
+              </button>
+              <button mat-icon-button mwlCalendarToday [(viewDate)]="viewDate">
+                <mat-icon>today</mat-icon>
+              </button>
+              <button mat-icon-button mwlCalendarNextView [view]="view" [(viewDate)]="viewDate">
+                <mat-icon *ngIf="settings.rtl">chevron_left</mat-icon>
+                <mat-icon *ngIf="!settings.rtl">chevron_right</mat-icon>
+              </button>
+            </div>
+            <h2>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h2>
+            <div class="">
+              <!-- <button mat-icon-button (click)="view = 'month'">
+                            <mat-icon>view_comfy</mat-icon>
+                        </button> -->
+              <!-- <button mat-icon-button (click)="view = 'week'">
+                            <mat-icon>view_week</mat-icon>
+                        </button>
+                        <button mat-icon-button (click)="view = 'day'">
+                            <mat-icon>view_day</mat-icon>
+                        </button>
+                         <button mat-icon-button (click)="openScheduleDialog(null)">
+  
+                            <mat-icon>add</mat-icon>
+                        </button> -->
+
+            </div>
+          </div>
+        </div>
+
+        <div [ngSwitch]="view">
+          <mwl-calendar-month-view *ngSwitchCase="'month'" [viewDate]="viewDate" [events]="events" [refresh]="refresh" [activeDayIsOpen]="activeDayIsOpen"
+            (dayClicked)="dayClicked($event.day)">
+          </mwl-calendar-month-view>
+          <mwl-calendar-week-view *ngSwitchCase="'week'" [viewDate]="viewDate" [events]="events" [refresh]="refresh">
+          </mwl-calendar-week-view>
+          <mwl-calendar-day-view *ngSwitchCase="'day'" [viewDate]="viewDate" [events]="events" [refresh]="refresh">
+          </mwl-calendar-day-view>
+        </div>
+
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+
+<!-- <img  class="img" src="../../../assets/img/Assets-scheduling.png" > -->

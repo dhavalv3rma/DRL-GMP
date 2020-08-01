@@ -1,0 +1,26 @@
+<div fxLayout="column">
+  <mat-card>
+      <mat-card-header fxLayoutAlign="center center">
+          <mat-card-subtitle>
+              <h2>Feedback of CAPA Clearance- 2019 vs 2020</h2>
+          </mat-card-subtitle>
+      </mat-card-header>
+      <div class="col-8 m-auto mt-4 w-100 h-300p">
+        <ngx-charts-bar-vertical-2d
+        [view]="view"
+        [scheme]="colorScheme"
+        [results]="multi"
+        [xAxis]="showXAxis"
+        [yAxis]="showYAxis"
+        [legend]="showLegend"
+        [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel"
+        [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisLabel"
+        [legendTitle]="legendTitle">
+      </ngx-charts-bar-vertical-2d>
+      </div>
+  </mat-card>
+</div>
+
+

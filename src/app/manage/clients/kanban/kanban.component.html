@@ -1,0 +1,29 @@
+<div class="flex-p">
+        <div class="row wrap">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <div class="w-100 flex-p">
+                    </div>
+                </div>
+                <div class="col-xs-6"  style="margin-right:0px !important">
+                    <div class="w-100 flex-p">
+                
+                        <button *ngIf="showScrolls" mat-raised-button color="btn-default" style="background-color: #dddddd;margin-top: -72px;margin-right: 283px!important;" class="pull-right add-dark-hover margin-right-10" (click)="scrollKanban('left');">
+                            <mat-icon>fast_forward</mat-icon> Next
+                        </button>
+                
+                        <button *ngIf="showScrolls" mat-raised-button color="btn-default" style="background-color: #dddddd;margin-top: -72px; margin-right: 390px!important;" class="pull-right add-dark-hover margin-right-10" (click)="scrollKanban('right');">
+                            <mat-icon>fast_rewind</mat-icon> Prev
+                        </button>
+                        <!-- <h5 class="pull-right margin-right-10" style="margin-top:12px">Prospects Showing : 5</h5> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+<div fxLayout="row wrap" style="margin-top: -5px;">
+        <div class="w-100 flex-p" style="margin-top:-25px;">
+            <jqxKanban [theme]="'material'" #myKanban class="w-100 " (onItemMoved)="myKanbanOnItemAttrMoved($event)"
+                [height]="600" [template]="template" [source]="dataAdapter" [columns]="columns" [resources]="resourcesAdapterFunc()"
+                [columnRenderer]="columnRenderer" [itemRenderer]="itemRenderer">
+            </jqxKanban>
+        </div>
+    </div>

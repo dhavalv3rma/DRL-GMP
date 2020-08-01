@@ -1,0 +1,30 @@
+<!--This page is used to show data of each prospect-->
+<div fxLayout="row wrap">
+  <div class="w-100 flex-p">
+        <p>
+            <span class="mr-8" style="font-size: 18px;font-weight: bold;">Prospect:</span>
+            <span class="mr-8" style="font-size: 16px;">Blue Stone India</span>
+            <span class="mr-8" style="font-size: 16px;">-CTO Campaign</span>
+            <span class="mr-8" style="font-size: 12px;"> ( Vancouver | Pranab )</span>
+            <span class="mr-8 dot Green" style="height: 14px;width: 14px;vertical-align: text-bottom;float: none;"></span>
+        </p>
+    <div class="jumbotron">
+        <div class="row super-row">
+            <a class="col-sm" [ngClass]="checkUrl('class')"  routerLink="timeline">Timeline (22) </a>
+            <a  class = "col-sm" routerLinkActive="active-prosp-link" routerLink = "opportunities">Opportunities (1)</a>
+            <a  class = "col-sm" routerLinkActive="active-prosp-link" routerLink = "qualification">Qualification (4) </a>
+            <a  class = "col-sm" routerLinkActive="active-prosp-link" routerLink = "meetings">Meetings (2)</a>
+            <a  class = "col-sm" routerLinkActive="active-prosp-link" routerLink = "contacts">Contacts  (4)</a>
+        </div>
+        <div class="row" *ngIf="checkUrl('status')">
+            <a class="col-sm tm add-dark-hover" routerLinkActive="active-prosp-link" routerLink="any">Any (3)</a>
+            <a class="col-sm tm add-dark-hover" routerLinkActive="active-prosp-link" routerLink="notes">Notes (5)</a>
+            <a class="col-sm tm add-dark-hover" routerLinkActive="active-prosp-link" routerLink="linkedin">Linkedin (4)</a>
+            <a  class = "col-sm tm add-dark-hover" routerLinkActive="active-prosp-link" routerLink = "calls">Calls (9)</a>
+            <a class="col-sm tm add-dark-hover" routerLinkActive="active-prosp-link" routerLink="emails">Emails (3)</a>
+            <a class="col-sm tm add-dark-hover" routerLinkActive="active-prosp-link" routerLink="messages">Text (6)</a>
+        </div>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+</div>

@@ -1,0 +1,158 @@
+<div fxLayout="row wrap">
+    <div class="w-100">
+
+        <div class="flex-p">
+            <div class="row wrap">
+                <div class="col-xs-12" style="margin-right:0px !important; margin-top: 15px">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <div class="pills w-100">
+                            <ul class="nav nav-pills ">
+                                <li routerlinkactive="active">
+                                    <a (click)="GridView()" [ngClass]="{'tabActive': gridview === true}" style="margin-right: 8px; padding: 0px 10px;"
+                                        mat-raised-button="" class="remove_top_bottom_padding mat-raised-button"
+                                        tabindex="0" aria-disabled="false">
+                                        <span class="mat-button-wrapper" >
+                                            <mat-icon class="mat-icon material-icons" role="img" aria-hidden="true">grid_on</mat-icon>
+                                            Grid View
+                                        </span>
+                                        <div class="mat-button-ripple mat-ripple" matripple=""></div>
+                                        <div class="mat-button-focus-overlay"></div>
+                                    </a>
+                                </li>
+                                <li routerlinkactive="active">
+                                        <a (click)="Review()" [ngClass]="{'tabActive': review === true}" style="margin-right: 8px; padding: 0px 10px;"
+                                            mat-raised-button="" class="remove_top_bottom_padding mat-raised-button"
+                                            tabindex="0" aria-disabled="false">
+                                            <span class="mat-button-wrapper" >
+                                                <mat-icon class="mat-icon material-icons" role="img" aria-hidden="true">sort</mat-icon>
+                                                Review
+                                            </span>
+                                            <div class="mat-button-ripple mat-ripple" matripple=""></div>
+                                            <div class="mat-button-focus-overlay"></div>
+                                        </a>
+                                    </li>
+                                <!-- <li routerlinkactive="active">
+                                    <a (click)="BandView()" [ngClass]="{'tabActive': bandview === true}" style="margin-right: 8px; padding: 0px 10px;"
+                                        mat-raised-button="" class="remove_top_bottom_padding mat-raised-button"
+                                        tabindex="0" aria-disabled="false">
+                                        <span class="mat-button-wrapper">
+                                            <mat-icon class="mat-icon material-icons" role="img" aria-hidden="true">layers</mat-icon>
+                                            Band View
+                                        </span>
+                                        <div class="mat-button-ripple mat-ripple" matripple=""></div>
+                                        <div class="mat-button-focus-overlay"></div>
+                                    </a>
+                                </li> -->
+                                <li routerlinkactive="active">
+                                    <a (click)="MapView()" [ngClass]="{'tabActive': mapview === true}" style="margin-right: 8px; padding: 0px 10px;"
+                                        mat-raised-button="" class="remove_top_bottom_padding mat-raised-button"
+                                        tabindex="0" aria-disabled="false">
+                                        <span class="mat-button-wrapper">
+                                            <mat-icon class="mat-icon material-icons" role="img" aria-hidden="true">place</mat-icon>
+                                            Map View
+                                        </span>
+                                        <div class="mat-button-ripple mat-ripple" matripple=""></div>
+                                        <div class="mat-button-focus-overlay"></div>
+                                    </a>
+                                </li>
+                                <li routerlinkactive="active">
+                                    <a (click)="KanbanView()" [ngClass]="{'tabActive': kanbanview === true}" style="padding: 0px 10px;"
+                                        mat-raised-button="" class="remove_top_bottom_padding mat-raised-button"
+                                        tabindex="0" aria-disabled="false">
+                                        <span class="mat-button-wrapper">
+                                            <mat-icon class="mat-icon material-icons" role="img" aria-hidden="true">swap_horiz</mat-icon>
+                                            Kanban View
+                                        </span>
+                                        <div class="mat-button-ripple mat-ripple" matripple=""></div>
+                                        <div class="mat-button-focus-overlay"></div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 pull-right">
+                            <button mat-raised-button class="pull-right add-hover-help btn-success-help">
+                                    <mat-icon>help_outline</mat-icon> Help
+                                </button>
+                        <button mat-raised-button class="pull-right add-hover btn-success margin-right-10" (click)="openoppurtunityDialog(null)">
+                            <mat-icon>add</mat-icon> Add Project
+                        </button>
+                        <button mat-raised-button color="primary" class="pull-right filter-hover margin-right-10"
+                            (click)="filterToggle = !filterToggle">
+                            <mat-icon>filter_list</mat-icon> Filter
+                        </button>
+                    </div>
+                </div>
+                <!-- <div fxLayout="row wrap" > -->
+                <div fxLayout="row wrap" *ngIf="filterToggle">
+                    <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p">
+                        <mat-card class="filter">
+                            <mat-card-content>
+                                <div class="row col-lg-12">
+                                    <div class="col-lg-2 col-md-3 col-sm-3">
+                                        <input type="text" class='select-option form-control' placeholder="From Date" onfocus="(this.type='date')"
+                                            onblur="if(this.value==''){this.type='text'}">
+                                    </div>
+                                    <div class="col-lg-2 col-md-3 col-sm-3">
+                                        <input type="text" class='select-option form-control' placeholder="To Date" onfocus="(this.type='date')"
+                                            onblur="if(this.value==''){this.type='text'}">
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <select class='select-option form-control' required [(ngModel)]='projectOptionSelected'
+                                            (ngModelChange)='onProjectOptionsSelected($event)'>
+                                            <option class='option' [ngValue]="undefined" selected disabled>--By
+                                                Client--</option>
+                                            <option class='option' *ngFor='let option of projectOptions' [value]="option">{{option}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <select class='select-option form-control' required [(ngModel)]='projectOptionSelected'
+                                            (ngModelChange)='onProjectOptionsSelected($event)'>
+                                            <option class='option' [ngValue]="undefined" selected disabled>--By
+                                                Project Manager--</option>
+                                            <option class='option' *ngFor='let option of projectOptions' [value]="option">{{option}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <select class='select-option form-control' required [(ngModel)]='projectOptionSelected'
+                                            (ngModelChange)='onProjectOptionsSelected($event)'>
+                                            <option class='option' [ngValue]="undefined" selected disabled>--By
+                                                Project--</option>
+                                            <option class='option' *ngFor='let option of projectOptions' [value]="option">{{option}}</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-lg-1">
+                                        <button type="button" class="btn btn-success add-hover pull-right">Search</button>
+                                    </div>
+                                    <div class="col-lg-1" style="padding-left: 0px!important;width: 96px;padding-right: 30px;">
+                                        <button type="button" class="reset-hover btn btn-success-gray  pull-right">Reset</button>
+                                    </div>
+                                </div>
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<div *ngIf='gridview' class="col-sm-12" style="padding-right:0px!important">
+    <app-projectgridview></app-projectgridview>
+</div>
+<div *ngIf='review' class="col-sm-12" style="padding-right:0px!important">
+        <app-review></app-review>
+    </div>
+
+
+<div *ngIf='mapview' style="padding-right:0px!important">
+    <app-project-maps></app-project-maps>
+</div>
+<div *ngIf='kanbanview' style="padding-right:0px!important">
+    <app-prospects></app-prospects>
+</div>
+

@@ -1,0 +1,42 @@
+<div class="table-responsive w-100 col-sm-12" style="padding: 7px;">
+  <table class="table table-striped table-bordered table-hover">
+    <thead class="tbl-head">
+      <tr class="tr-grid-header">
+          <th style="width: 4%;" class="text-center">Select <br/> <mat-checkbox color='warn'></mat-checkbox></th>
+          <th style="min-width: 200px;">Subject</th>
+          <th>Hierarchy (Client >> Project >> Site >> Scope of Work >> Task)</th>
+          <th style="min-width: 125px;">Claimed By  </th>
+          <th style="min-width: 125px;">Role Title</th>
+          <th style="min-width: 125px;">Validated By</th>
+          <th style="min-width: 100px;" class="text-center">Amount</th>
+          <th style="min-width: 100px;" class="text-center">Year <br/>Till Date</th>
+          <th style="min-width: 230px;">Pending &nbsp; | &nbsp;Approve &nbsp; | &nbsp; Decline</th>
+      </tr>
+    </thead>
+<tbody>
+  <tr *ngFor="let item of dataSource">
+    <td class="text-center"><mat-checkbox color='warn' [checked]=item.isSelected ></mat-checkbox></td>
+    <td>{{item.subject}}</td>
+    <td>{{item.columns}}</td>
+    <td>{{item.partyChief}}</td>
+    <td>{{item.role}}</td>
+    <td>{{item.validatedby}}</td>
+    <td class="text-center">{{item.amount}}</td>
+    <td class="text-center">{{item.tillDateAmount}}</td>
+    <td class="text-center">
+        <mat-radio-group aria-label="Select an option">
+            <mat-radio-button color='primary' [checked]=item.isPending value="1" style="padding-right: 10px"></mat-radio-button>
+            <span style="padding-right: 15px;padding-left: 5px;font-size:25px;">|</span>
+            <mat-radio-button color='warn'  class="approve" [checked]=item.isApproved value="2" style="padding-left: 10px;"></mat-radio-button>
+            <span style="padding-right: 15px;padding-left: 20px;font-size: 25px;">|</span>
+            <mat-radio-button color='warn'  class="decline" [checked]=item.isDeclined value="3"></mat-radio-button>
+          </mat-radio-group>
+    </td>
+  </tr>
+</tbody>
+  </table>
+</div>
+
+
+
+

@@ -1,0 +1,19 @@
+<div fxLayout="row wrap" style="margin-top:10px;padding: 0px 5px 0px 5px;">
+<div class="w-100 flex-p">
+      
+            
+    <mgl-timeline  [alternate]="alternate">
+      <mgl-timeline-entry *ngFor="let entry of entries; let i = index;" (expand)="onExpandEntry($event, i)">
+        <mgl-timeline-entry-header [class] = 'entry.headerClass' (click)="onHeaderClick($event)">
+          <div style="margin-bottom:10px;"><i class="{{entry.element}}" style="float: left">&nbsp;&nbsp;&nbsp;</i><b style="float: left">{{entry.header}}</b>&nbsp;&nbsp;&nbsp;&nbsp;<b style="float: right">{{entry.date}}</b></div>
+          <div><p class="left-alignment"><i class="{{entry.dataelement}}" style="float: left"></i>{{entry.content}}</p></div>
+        </mgl-timeline-entry-header>
+        
+        <mgl-timeline-entry-dot [class]="entry.class"
+        [size]="size"
+        (click)="onDotClick($event)"></mgl-timeline-entry-dot>
+        <!-- <mgl-timeline-entry-side>2018</mgl-timeline-entry-side> -->
+      </mgl-timeline-entry>
+    </mgl-timeline>
+    </div>
+    </div>

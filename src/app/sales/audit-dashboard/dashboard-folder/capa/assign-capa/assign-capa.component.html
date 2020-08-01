@@ -1,0 +1,24 @@
+<div fxLayout="row wrap" #resizedDiv>
+  <div class="flex-p w-100">
+      <h1 mat-dialog-title>Assign</h1><hr>
+      <form class="form-horizontal">
+          <div class="form-group">
+              <label class="control-label col-sm-4" for="pwd">Select Site : </label>
+              <div class="col-sm-8">
+                <select name="campaign" class='form-control' required>
+                  <option Value="" selected>--Select Group--</option>
+                  <option >CTO-1</option>
+                  <option >FTO-1</option>
+                  <option >CFA</option>
+                  <option >CTO-2</option>
+              </select>
+              </div>
+          </div>
+      </form>
+  </div>
+</div>
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button class="btn-success">Save</button>
+  <button mat-raised-button class="add-dark-hover btn-default" (click)="close()">Cancel</button>
+</mat-dialog-actions> 

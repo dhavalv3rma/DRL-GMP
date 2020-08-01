@@ -1,0 +1,26 @@
+<!-- <div fxLayout="row wrap">
+    <div fxFlex="100" class="flex-p"> 
+        
+    </div>
+</div> -->
+
+
+
+<div fxLayout="column">
+        <!-- <div class="flex-p">  -->
+                <mat-card style="background-color:#ddd;">
+                <h2 style="text-align: center; color: rgba(0, 0, 0, 0.54);">Opportunities Distribution</h2>
+                <div class="w-100 h-300p">
+                    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [mapTypeControl]="false" autofocus>
+                            <agm-marker *ngFor="let pointer of pointers" [latitude]="pointer.lat" [longitude]="pointer.lng" [markerDraggable]="true"></agm-marker>
+                        
+                        <!-- <agm-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="true"></agm-marker>
+                        <agm-marker [latitude]="latnew" [longitude]="lngnew" [markerDraggable]="true"></agm-marker>
+                        <agm-marker [latitude]="latnew2" [longitude]="lngnew2" [markerDraggable]="true"></agm-marker>
+                        <agm-marker [latitude]="latnew3" [longitude]="lngnew3" [markerDraggable]="true"></agm-marker>
+                        <agm-marker [latitude]="latnew4" [longitude]="lngnew4" [markerDraggable]="true"></agm-marker> -->
+                    </agm-map>                  
+                </div>
+            </mat-card>
+        <!-- </div>   -->
+    </div>

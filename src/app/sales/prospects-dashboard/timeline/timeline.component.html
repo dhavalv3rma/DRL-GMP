@@ -1,0 +1,75 @@
+<div fxLayout="row wrap" style="margin-top: -15px;padding: 0px 5px 0px 5px;">
+    <div class="w-100 flex-p">
+        <button mat-raised-button color="primary" class="pull-right filter-hover" (click)="toggleFilter()">
+            <mat-icon>filter_list</mat-icon> Filter
+        </button>
+        <p style="margin-top:5px;">
+            <span class="mr-8" style="font-size: 18px;font-weight: bold;">Timeline History:</span>
+        </p>
+    </div>
+    <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="w-100 flex-p" *ngIf="filterToggle">
+        <mat-card class="filter">
+            <mat-card-content>
+                    <div class="row">
+                            <div class="form-group">
+                                <label style="margin-top: 6px;" class="control-label col-sm-3">Mode:</label>
+                                <div class="col-sm-9">
+                                    <select class='select-option form-control' required [(ngModel)]='locationOptionSelected' (ngModelChange)='onLocationOptionsSelected($event)'>
+                                        <option class='option' [ngValue]="undefined" selected disabled>By Type</option>
+                                        <option class='option' *ngFor='let option of locationOptions' [value]="option">{{option}}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label style="margin-top: 6px;" class="control-label col-sm-4">From Date:</label>
+                                <div class="col-sm-8">
+                                    <div class="input-icon right">
+                                        <i class="fa fa-calendar" [owlDateTimeTrigger]="dt1"></i>
+                                        <input class="form-control" placeholder="MM/DD/YYYY" class="form-control" id="dob" [(ngModel)]="dateTime1" [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" name="dt1">
+                                        <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label style="margin-top: 6px;" class="control-label col-sm-4">To Date:</label>
+                                <div class="col-sm-8">
+                                    <div class="input-icon right">
+                                        <i class="fa fa-calendar" [owlDateTimeTrigger]="dt2"></i>
+                                        <input class="form-control" placeholder="MM/DD/YYYY" class="form-control" id="dt2" [(ngModel)]="dateTime1" [owlDateTimeTrigger]="dt2" [owlDateTime]="dt2" name="dt2">
+                                        <owl-date-time [pickerType]="'calendar'" #dt2></owl-date-time>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-1 col-md-1 col-sm-1">
+                                <button type="button"  class="add-hover btn btn-success pull-right">Search</button>
+                            </div>
+                            
+                            
+                        </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="w-100 flex-p">
+      
+            
+  <mgl-timeline  [alternate]="alternate">
+    <mgl-timeline-entry *ngFor="let entry of entries; let i = index;" (expand)="onExpandEntry($event, i)">
+      <mgl-timeline-entry-header [class] = 'entry.headerClass' (click)="onHeaderClick($event)">
+        <div style="margin-bottom:10px;"><i class="{{entry.element}}" style="float: left">&nbsp;&nbsp;&nbsp;</i><b style="float: left">{{entry.header}}</b>&nbsp;&nbsp;&nbsp;&nbsp;<b style="float: right">{{entry.date}}</b></div>
+        <div><p class="left-alignment"><i class="{{entry.dataelement}}" style="float: left"></i>{{entry.content}}</p></div>
+      </mgl-timeline-entry-header>
+      
+      <mgl-timeline-entry-dot [class]="entry.class"
+      [size]="size"
+      (click)="onDotClick($event)"></mgl-timeline-entry-dot>
+      <!-- <mgl-timeline-entry-side>2018</mgl-timeline-entry-side> -->
+    </mgl-timeline-entry>
+  </mgl-timeline>
+  </div>
+  </div>
+  
+  
+  

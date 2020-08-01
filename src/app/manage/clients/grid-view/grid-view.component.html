@@ -1,0 +1,166 @@
+<div fxLayout="row wrap">
+    <div class="w-100">
+        <div fxLayout="row wrap" *ngIf="filterToggle">
+            <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p w-100">
+                <mat-card class="filter">
+                    <!-- <mat-card-header>
+                          <mat-card-subtitle> <b>Filter</b></mat-card-subtitle>
+                      </mat-card-header> -->
+                    <mat-card-content>
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <input type="text" class="form-control" placeholder="Keyword">
+                            </div>
+                            <div class="col-lg-3" style="margin-top: 8px;color:gray">
+                                <!-- <input type="text" class='select-option form-control' placeholder="Last Activity Date Range"
+                                      onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}"> -->
+                                <mat-radio-group aria-label="Select an option">
+                                    <mat-radio-button value="1" checked='true'>Active Date</mat-radio-button>
+                                    <mat-radio-button value="2">Created Date</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="text" class='select-option form-control' placeholder="From Date" onfocus="(this.type='date')"
+                                    onblur="if(this.value==''){this.type='text'}">
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="text" class='select-option form-control' placeholder="To Date" onfocus="(this.type='date')"
+                                    onblur="if(this.value==''){this.type='text'}">
+                            </div>
+                            <div class="col-lg-2">
+                                <mat-select placeholder="--Search by Project Manager--" multiple class="form-control">
+                                    <mat-option *ngFor="let campaign of managerOptions" [value]="">{{campaign}}</mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 10px;">
+                            <div class="col-lg-2">
+                                <select class='select-option form-control'>
+                                    <option class='option' [ngValue]="undefined" selected disabled>--Search by Status--</option>
+                                    <option value="Initiated">Initiated</option>
+                                    <option value="InProgress">In Progress</option>
+                                    <option value="Scheduled">Scheduled</option>
+                                    <option value="Completed">Completed</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-1">
+                                <button type="button" class="add-hover btn btn-success  pull-right">Search</button>
+                            </div>
+                            <div class="col-lg-1">
+                                <button type="button" class="reset-hover btn btn-success-gray  pull-right">Reset</button>
+                            </div>
+                            <div class="col-lg-2"></div>
+
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+        <div fxLayout="row wrap" style="margin-top:-3px;">
+            <div class="table-responsive w-100 flex-p" >
+                <table id="example2" class="table table-bordered table-hover">
+                    <thead class="tbl-head">
+                        <tr class="tr-grid-header">
+                            <th style="padding-left: 5px!important;">Location</th>
+                            <th style="padding-left: 5px!important;">Schedule From Date</th>
+                            <th style="padding-left: 5px!important;">Schedule To Date</th>
+                            <th style="padding-left: 5px!important;">Audit From Date</th>
+                            <th style="padding-left: 5px!important;">Audit To Date</th>
+                            <th style="padding-left: 5px!important;">Agenda</th>
+                            <th style="padding-left: 5px!important;">Checklist</th>
+                            <th style="padding-left: 5px!important;">Dairy</th>
+                            <th style="padding-left: 5px!important;">Audit Report</th>
+                            <th style="padding-left: 5px!important;">CAPA</th>
+                            <th style="padding-left: 5px!important;">Action Plan</th>
+                            <!-- <th style="padding-left: 5px!important;">Timeline</th>
+                            <th style="padding-left: 5px!important;">Expenses</th>
+                            <th style="padding-left: 5px!important;">Assets</th>
+                            <th style="padding-left: 5px!important;">Schedules</th>
+                            <th style="padding-left: 5px!important;">Billing</th> -->
+                            <th style="padding-left: 5px!important;">Timeline</th>
+                            <th style="padding-left: 5px!important;">Audit team</th>
+                            <th style="padding-left: 5px!important;">Stage</th>
+                            <th style="padding-left: 5px!important;">Progress (%)</th>
+                            <th style="padding-left: 5px!important;">Status</th>
+                            <th style="padding-left: 5px!important;">Remarks</th>
+                            <!-- <th style="padding-left: 5px!important;">Active</th> -->
+                            <th style="padding-left: 5px!important;">Actions</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody> 
+                        <tr *ngFor="let item of audits">
+                            <td style="padding-left: 5px!important;"><a [title]="item.location">{{item.location}}</a></td>
+                            <td style="padding-left: 5px!important;">{{item.targetDate}}</td>
+                            <td style="padding-left: 5px!important;">{{item.targetDate}}</td>
+                            <td style="padding-left: 5px!important;">{{item.auditDate}}</td>
+                            <td style="padding-left: 5px!important;">{{item.auditDate}}</td>
+                            <td style="text-align: center!important;"><a target="_blank" routerLink="../../../OM/sales/auditdashboard">{{item.agenda}}</a></td>
+                            <td style="text-align: center!important"><a target="_blank" routerLink="../../../OM/sales/auditdashboard">{{item.checklist}}</a></td>
+                            <td style="text-align: center!important"><a target="_blank" routerLink="../../../OM/sales/auditdashboard">{{item.diary}}</a></td>
+                            <td style="text-align: center!important"><a target="_blank" routerLink="../../../OM/sales/auditdashboard">{{item.auditReport}}</a></td>
+                             <td style="text-align: center!important"><a target="_blank" routerLink="../../../OM/sales/auditdashboard">{{item.capa}}</a></td>
+                            <td style="text-align: center!important"><a target="_blank" routerLink="../../../OM/sales/auditdashboard">{{item.actionPlan}}</a></td>
+                            <!--<td style="text-align: center!important"><a target="_blank" routerLink="../../../IBW/sales/timeline">{{item.expenses}}</a></td>
+                            <td style="text-align: center!important"><a target="_blank" routerLink="../../../IBW/sales/timeline">{{item.assets}}</a></td>
+                            <td style="text-align: center!important"><a target="_blank" routerLink="../../../IBW/sales/timeline">{{item.schedule}}</a></td>
+                            <td style="text-align: center!important"><a target="_blank" routerLink="../../../IBW/sales/timeline">{{item.overview}}</a></td>
+                            <td style="text-align: center!important"><a target="_blank" routerLink="../../../IBW/sales/timeline">{{item.billing}}</a></td> -->
+                            <td style="text-align: center!important"><a target="_blank" routerLink="../../../OM/sales/auditdashboard">{{item.timeline}}</a></td>
+                            <td style="text-align: center!important"><a (click)="openTeamDialog(null)" style="color:#007ad9;cursor:pointer;">{{item.auditTeam}}</a></td>
+                            <td >{{item.stage}}</td>
+                            <td style="text-align: center!important">{{item.completion}}</td>
+                            <!-- <td style="padding-left: 5px!important;text-align:center!important">{{item.statuss}}</td> -->
+                            <td><span class="change-icon" [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger">
+                                    <i class="fa fa-circle dot {{item.colorCode}}" style="color:#53a508;margin-right: 14px;"></i>
+                                    <i class="fa fa-chevron-circle-down dot dot-arrow {{item.colorCode}}" style="color:#53a508;margin-right: 14px;"></i>
+                                </span> <br>
+                                <mat-menu #menu="matMenu">
+                                    <span mat-menu-item class="mat-color-menu"> <i class="fa fa-circle dot-menu Green"></i>
+                                        &nbsp;&nbsp;Fast</span>
+                                    <span mat-menu-item class="mat-color-menu"> <i class="fa fa-circle dot-menu Blue"></i>
+                                        &nbsp;&nbsp;Moderate</span>
+                                    <span mat-menu-item class="mat-color-menu"><i class="fa fa-circle dot-menu" style="color:gray"></i>
+                                        &nbsp;&nbsp;Slow</span>
+                                    <span mat-menu-item class="mat-color-menu"> <i class="fa fa-circle dot-menu Red"></i>
+                                        &nbsp;&nbsp;Stagnant</span>
+                                </mat-menu>
+                            </td>
+                            <td style="text-align: center!important; cursor: pointer;color: #007ad9;" (click)="openRemarksDialog(null)">View</td>
+                            <!-- <td><select class='select-option form-control' style="padding: 0px 0px 0 7px;height: 23px!important;">
+                                    <option class='option' [ngValue]="undefined" selected disabled>--Stage--</option>
+                                    <option value="Stagnant">Stagnant</option>
+                                    <option value="Slow">Slow</option>
+                                    <option value="Moderate">Moderate</option>
+                                    <option value="Fast">Fast</option>
+                                </select></td> -->
+                                <!-- <td class="pad-left inner-screen" style="text-align: center!important"><a (click)="item.status = ! item.status">
+                                        <span *ngIf="!item.status">Inactive</span> <span *ngIf="item.status">Active</span>
+                                    </a></td> -->
+                            <!-- <td style="text-align: center!important"><a routerLink="/IBW/sales/projects">{{item.status}}</a></td> -->
+                            <!-- <td style="padding-left: 5px!important;"><input type="checkbox" style="margin:6px 0 0 18px"></td> -->
+                            <td style="text-align: center!important">
+                                <a title="Edit project Details" style="margin-right: 10px; cursor: pointer;font-size:16px!important;color:#0987e8d1">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                                <a>
+                                    <i style="cursor: pointer;font-size:16px!important;" title="Delete" class="fa fa-trash red"></i>
+                                </a>
+                            </td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <!-- <div *ngIf="!isGrid">
+          <app-map-view></app-map-view>
+      </div> -->
+    </div>
+</div>
+
+<!-- <div *ngIf="!leads" fxLayout="column" fxLayoutAlign="center center" class="lead-spinner">
+  <mat-spinner color="primary"></mat-spinner>
+</div> -->

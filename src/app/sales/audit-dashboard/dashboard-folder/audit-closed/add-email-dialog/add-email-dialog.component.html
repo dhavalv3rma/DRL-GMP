@@ -1,0 +1,30 @@
+<div fxLayout="row wrap" #resizedDiv>
+    <div class="flex-p w-100">
+        <h1 mat-dialog-title>Email Audit Closure Report</h1><hr>
+        <form class="form-horizontal">
+            <mat-form-field class="w-100">
+                <input matInput placeholder="To">
+            </mat-form-field>
+            <mat-form-field class="w-100">
+                <input matInput placeholder="Subject">
+            </mat-form-field>
+            <mat-form-field class="w-100">
+                <textarea matInput placeholder="Message"></textarea>
+            </mat-form-field>
+            <div class="row" style="margin-right: 320px;">
+              <i class="fa fa-file-pdf-o fa-5x" style=""></i>  
+              <!-- <br><br><br><br> -->
+              <!-- <mat-icon>attach_file</mat-icon> -->
+            </div>
+            <div class="row">
+                audit_closure_report_cto_1.pdf
+            </div>
+           
+            
+        </form>
+    </div>
+</div>
+<mat-dialog-actions align="end">
+    <button mat-raised-button class="add-hover btn-success">Send</button>
+    <button mat-raised-button class="add-dark-hover btn-default" (click)="close()">Cancel</button>
+</mat-dialog-actions> 

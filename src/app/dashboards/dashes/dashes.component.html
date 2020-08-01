@@ -1,0 +1,164 @@
+<!--This page is used to manage users-->
+<div fxLayout="row wrap" #resizedDiv>
+  <div class="flex-p w-100">
+    <div class="row" style="margin-bottom:14px;">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="w-100 flex-p">
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="w-100 flex-p">
+          <button *ngIf="canCreate" mat-raised-button class="pull-right add-hover btn-success">
+            <mat-icon>person_add</mat-icon> Add
+            User
+          </button>
+          <button mat-raised-button color="primary" class="pull-right filter-hover margin-right-10" (click)="filterToggle = !filterToggle">
+            <mat-icon>filter_list</mat-icon> Filter
+          </button>
+        </div>
+      </div>
+    </div>
+    <div fxLayout="row wrap" *ngIf="filterToggle">
+      <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p margins">
+        <mat-card class="filter">
+          <mat-card-content>
+            <div class="row">
+              <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                <select class="form-control">
+                  <option value="" disabled selected> -- Select Month -- </option>
+                  <option value="2016">January</option>
+                  <option value="2017">February</option>
+                  <option value="2018">March</option>
+                  <option value="2019">April</option>
+                  <option value="2019">May</option>
+                  <option value="2019">June</option>
+                  <option value="2019">July</option>
+                  <option value="2019">August</option>
+                  <option value="2019">September</option>
+                  <option value="2019">October</option>
+                  <option value="2019">November</option>
+                  <option value="2019">December</option>
+                </select>
+              </div>
+              <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                <select class="form-control">
+                  <option value="" disabled selected> -- Select Year -- </option>
+                  <option value="2016">2016</option>
+                  <option value="2017">2017</option>
+                  <option value="2018">2018</option>
+                  <option value="2019">2019</option>
+                  <option value="2019">2020</option>
+                </select>
+              </div>
+              <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                  <select class="form-control">
+                    <option value="" disabled selected> -- Select Lead Auditor -- </option>
+                    <option value="2016">Navin</option>
+                    <option value="2017">Shiva</option>
+                    <option value="2018">Vijay</option>
+                    <option value="2019">Harsha</option>
+                  </select>
+                </div>
+              <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                  <select class="form-control">
+                    <option value="" disabled selected> -- Select Group -- </option>
+                    <option value="2016">CTO</option>
+                    <option value="2017">FTO</option>
+                    <option value="2018">R & D Centres</option>
+                    <option value="2019">CFA</option>
+                  </select>
+                </div>
+              <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                  <button class="add-hover btn btn-success">Go</button>
+                </div>
+            </div>
+            <!-- <div class="row">
+              <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                <input type="text" [(ngModel)] = "name_filter" onCopy="return false" onPaste="return false" class="form-control" (keypress)="omit_special_number_char($event)" placeholder="Search by User Name" >
+              </div>
+              <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                <select class="form-control" [(ngModel)] = "status_filter">
+                  <option selected value=""> -- Select Status -- </option>
+                  <option value="1">Active</option>
+                  <option value="0">Inactive</option>
+                </select>
+              </div>
+              <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                <button class="add-hover btn btn-success" (click)="filterUsers()">Search</button>
+              </div>
+              <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="margin-left: -18px;">
+                <button class="btn filter-hover" style="background-color:#37474f; color:#fff !important" (click)="clearFilters()">Clear</button>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>                            
+            </div> -->
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+    <div fxLayout="row wrap">
+      <div class="table-responsive topmargin">
+        <table id="example2" class="table table-bordered table-hover">
+          <thead class="tbl-head">
+            <tr class="tr-grid-header">
+                <th>Group</th>
+              <th>Unit</th>
+              <th>Cyclewise</th>
+              <th>Planned Start Date</th>
+              <th>Planned End Date</th>
+              <th>Audit Actual Date</th>
+              <th>Audit End Date</th>
+              <th>Audit Report Date</th>
+              <th>Repeat Observations</th>
+              <th>Auditee Response</th>
+              <th>Auditor Comments</th>
+              <th>Response Acceptance (%)</th>
+              <th>Revised Response</th>
+              <th>CAPA Created</th>
+              <th>CAPA Closed</th>
+              <th>CAPA Overdue</th>
+              <th>CAPA Extensions</th>
+              <th>Audit Closure Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngIf="showEmpty"><td colspan="10">No records found</td></tr>
+            <tr *ngFor="let audit of audits">
+                <td >{{audit.group}}</td>
+              <td >{{audit.unit}}</td>
+              <td >{{audit.cycle}}</td>
+              <td >{{audit.auditDate}}</td>
+              <td >{{audit.auditReport}}</td>
+              <td *ngIf="audit.scheduleDate" style="background-color: #66ffff">{{audit.scheduleDate}}</td>
+              <td *ngIf="!audit.scheduleDate" style="background-color: #e0e0e0"></td>
+              <td *ngIf="audit.auditDate" style="background-color: #66ffff">{{audit.auditDate}}</td>
+              <td *ngIf="!audit.auditDate" style="background-color: #e0e0e0"></td>
+              <td *ngIf="audit.conductDate" style="background-color: #66ffff">{{audit.conductDate}}</td>
+              <td *ngIf="!audit.conductDate" style="background-color: #e0e0e0"></td>
+              <td class="text-center" style="background-color: #66ffff">{{audit.observe}}</td>
+              <td *ngIf="!audit.auditReport" style="background-color: #e0e0e0"></td>
+              <td *ngIf="audit.auditReport" style="background-color: #66ffff">{{audit.auditReport}}</td>
+              <td *ngIf="!audit.auditReport" style="background-color: #e0e0e0"></td>
+              <td *ngIf="audit.auditReport" style="background-color: #66ffff">{{audit.auditReport}}</td>
+              <td *ngIf="!audit.auditReport" style="background-color: #e0e0e0"></td>
+              <td class="text-center" style="background-color: #66ffff">{{audit.percent}}</td>
+              <td *ngIf="!audit.auditeeResponse" style="background-color: #e0e0e0"></td>
+              <td *ngIf="audit.conductDate" style="background-color: #66ffff">{{audit.conductDate}}</td>
+              <td *ngIf="!audit.conductDate" style="background-color: #e0e0e0"></td>
+              <td *ngIf="audit.auditorRemarks" style="background-color: #66ffff">{{audit.auditReport}}</td>
+              <td *ngIf="!audit.auditorRemarks" style="background-color: #e0e0e0"></td>
+              <td *ngIf="audit.capaCreated" style="background-color: #66ffff">{{audit.capaCreated}}</td>
+              <td *ngIf="!audit.capaCreated" style="background-color: #e0e0e0"></td>
+              <td *ngIf="audit.capaClosed" style="background-color: #66ffff">{{audit.capaClosed}}</td>
+              <td *ngIf="!audit.capaClosed" style="background-color: #e0e0e0"></td>
+              <td *ngIf="audit.auditeeResponse" style="background-color: #66ffff">{{audit.auditReport}}</td>
+              <td *ngIf="!audit.auditeeResponse" style="background-color: #e0e0e0"></td>
+              <td *ngIf="audit.auditeeResponse" style="background-color: #66ffff">{{audit.auditeeResponse}}</td>
+              <td *ngIf="!audit.auditeeResponse" style="background-color: #e0e0e0"></td>
+            </tr>
+          </tbody>
+        </table>
+        <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSize]="pageSize" [pageSizeOptions]="[ 10, 25, 50, 100]" (page)="handlePage($event)" showFirstLastButtons></mat-paginator>
+      </div>
+    </div>
+  </div>
+</div>

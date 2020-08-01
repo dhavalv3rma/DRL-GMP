@@ -1,0 +1,30 @@
+<div fxLayout="row wrap" #resizedDiv>
+  <div class="flex-p w-100">
+      <h1 mat-dialog-title>Annual summary Report</h1><hr>
+      <form class="form-horizontal">
+          <mat-form-field class="w-100">
+              <input matInput placeholder="To">
+          </mat-form-field>
+          <mat-form-field class="w-100">
+              <input matInput placeholder="Subject">
+          </mat-form-field>
+          <mat-form-field class="w-100">
+              <textarea matInput placeholder="Message"></textarea>
+          </mat-form-field>
+          <div class="row">
+            <div class="row">
+              <i class="fa fa-file-pdf-o fa-5x m-auto" ></i>  
+            </div>
+            <div class="row">
+                audit_closure_report_cto_1.pdf
+            </div>
+          </div>
+         
+          
+      </form>
+  </div>
+</div>
+<mat-dialog-actions align="end">
+  <button mat-raised-button class="add-hover btn-success" (click)="alert()">Send</button>
+  <button mat-raised-button class="add-dark-hover btn-default" (click)="close()">Cancel</button>
+</mat-dialog-actions> 

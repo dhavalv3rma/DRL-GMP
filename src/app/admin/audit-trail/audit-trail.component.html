@@ -1,0 +1,71 @@
+<div fxLayout="row wrap" #resizedDiv>
+    <div class="flex-p w-100">
+  
+        <div class="row" style="margin-bottom:14px;">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="w-100 flex-p">
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="w-100 flex-p">
+                        <button mat-raised-button class="pull-right add-hover-help-anno btn-success-help-anno" style="margin-left: 10px;">
+                                <mat-icon>help_outline</mat-icon> Help
+                            </button>
+                    <!-- <button mat-raised-button class="pull-right add-hover btn-success" >
+                        <mat-icon>person_add</mat-icon> Add Announcement
+                    </button> -->
+                    <!-- <button mat-raised-button color="primary" style="color: white !important;" class="pull-right filter-hover margin-right-10" (click)="filterToggle = !filterToggle">
+                        <mat-icon>filter_list</mat-icon> Filter
+                    </button> -->
+                </div>
+            </div>
+        </div>
+  
+       
+  
+        <div fxLayout="row wrap">
+            <div class="table-responsive">
+                <table id="example2" class="table table-bordered table-hover eventstbl">
+                        <thead class="tbl-head">
+                                <tr class="tr-grid-header">
+                                   <th>Event Name</th>
+                                   <th>Event By</th>
+                                   <th>Updates</th>
+                                   <th>Event Type</th>
+                                   <th>Module</th>
+                                   <th>Timestamp</th>
+                                </tr>
+                             </thead>
+                             <tbody>
+                                <tr data-key="1452">
+                                   <td>Site - <b>CTO-1</b> has been updated.</td>
+                                   <td>Super Admin</td>
+                                   <td class="text-center event-details"><span (click)="openActionDialog()">2</span></td>
+                                   <td>Update</td>
+                                   <td>Site</td>
+                                   <td>20-06-2019 13:28:37 PM</td>
+                                </tr>
+                                <tr data-key="1451">
+                                   <td>Site - <b>FTO-1</b> has been updated.</td>
+                                   <td>Dipen</td>
+                                   <td class="text-center event-details"><span (click)="openActionDialog()">2</span></td>
+                                   <td>Update</td>
+                                   <td>Site</td>
+                                   <td>18-06-2019 16:23:57 PM</td>
+                                </tr>
+                                <tr data-key="1450">
+                                   <td>Group - <b>R & D</b> has been updated.</td>
+                                   <td>Super Admin</td>
+                                   <td class="text-center event-details"><span (click)="openActionDialog()">4</span></td>
+                                   <td>Update</td>
+                                   <td>Group</td>
+                                   <td>17-06-2019 11:52:13 AM</td>
+                                </tr>
+                             </tbody>
+                    
+                </table>
+            </div>
+        </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,116 @@
+<div fxLayout="row wrap" #resizedDiv>
+  <div class="w-100">
+    <!-- <div class="row" style="margin-bottom:14px;">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+          <div class="w-100 flex-p">
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+          <div class="w-100 flex-p">
+            <button mat-raised-button class="pull-right add-hover-help btn-success-help" style="margin-left: 10px;">
+              <mat-icon>help_outline</mat-icon> Help
+            </button>
+            <button mat-raised-button class="pull-right add-hover btn-success" (click)="openUserDialog(null)">
+              <mat-icon>person_add</mat-icon> Add User
+            </button>
+            <button mat-raised-button color="primary" style="color: white !important;" class="pull-right filter-hover margin-right-10"
+              (click)="filterToggle = !filterToggle">
+              <mat-icon>filter_list</mat-icon> Filter
+            </button>
+          </div>
+        </div>
+      </div> -->
+
+    <div fxLayout="row wrap" *ngIf="filterToggle">
+      <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p">
+        <mat-card class="filter">
+          <mat-card-header>
+            <mat-card-subtitle></mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="row">
+              <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                <input type="text" class="form-control" placeholder="Search by Name">
+              </div>
+              <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                <select class="form-control">
+                  <option disabled selected value> -- Select Role -- </option>
+                  <option>Project Managers</option>
+                  <option>Production Team</option>
+                  <option>Project Admin</option>
+                  <option>Administration</option>
+                  <option>Field Staff</option>
+                  <option>CAD Staff</option>
+                  <option>Finance</option>
+                </select>
+              </div>
+              <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                <select class="form-control">
+                  <option disabled selected value> -- Select Status -- </option>
+                  <option>Active</option>
+                  <option>Inactive</option>
+                </select>
+              </div>
+              <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                <button class="add-hover btn btn-success">Search</button>
+              </div>
+              <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                <button class="reset-hover btn btn-success-gray" (click)="Reset()">Reset</button>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"></div>
+
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+
+    <div fxLayout="row wrap" class="row flex-p" style="margin-top: 20px">
+      <div class="table-responsive">
+        <table id="example2" class="table table-bordered table-hover">
+          <thead class="tbl-head">
+            <tr class="tr-grid-header">
+              <th>Subject</th>
+              <th>Asset (s)</th>
+              <th>Party chief</th>
+              <th>Field Assistant (s)</th>
+              <th class="text-center">From Date</th>
+              <th class="text-center">To Date</th>
+              <th class="text-center">Returned</th>
+              <th class="text-center">Returned Date</th>
+              <th class="text-center">Status</th>
+              <th class="text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor='let item of data' >
+              <td>{{item.title}}</td>
+              <td matTooltip={{item.assetsList}}>{{item.assetsList}}</td>
+              <td>{{item.partyCheif}}</td>
+              <td  matTooltip={{item.fieldAssistantsList}}>{{item.fieldAssistantsList}}</td>
+              <td class="text-center">{{item.fromDate}}</td>
+              <td class="text-center">{{item.toDate}}</td>
+              <td class="text-center"><mat-checkbox color='warn' [checked]=item.isReturned (click)="OpenReturnDateDialog()" ></mat-checkbox></td>
+              <td class="text-center">{{item.returnedDate}}</td>
+              <td class="pad-left inner-screen" style="text-align: center!important">
+                  <a (click)="item.status = ! item.status">
+                      <span *ngIf="!item.status" style="color:red">Inactive</span>
+                      <span *ngIf="item.status">Active</span>
+                  </a>
+              </td>
+              <td>
+                <a matTooltip="Edit Details"  style="margin-right: 10px; cursor: pointer;font-size:16px!important;color:#0987e8d1">
+                  <i class="fa fa-edit"></i>
+              </a>
+              <a >
+                  <i style="cursor: pointer;font-size:16px!important;" matTooltip="Delete" class="fa fa-trash red"></i>
+              </a>
+              </td>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

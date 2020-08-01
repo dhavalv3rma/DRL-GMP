@@ -1,0 +1,19 @@
+<div fxLayout="row wrap" #resizedDiv>
+    <div class="flex-p w-100">
+        <h1 mat-dialog-title>Audit Team</h1><hr>
+        <mat-checkbox [checked]="myLabel">Rajesh</mat-checkbox><br>
+        <mat-checkbox [checked]="myLabels">Pranab</mat-checkbox><br>
+        <mat-checkbox [checked]="myLabel">Sriram</mat-checkbox><br>
+        <mat-checkbox [checked]="myLabel">Sharath</mat-checkbox><br>
+        <mat-checkbox [checked]="myLabel">Sairam</mat-checkbox><br>
+        <mat-checkbox [checked]="myLabel">Nikhil</mat-checkbox><br>
+        <mat-checkbox [checked]="myLabels">Navin</mat-checkbox><br>
+        <mat-checkbox [checked]="myLabel">Lakshmana</mat-checkbox><br>
+        <mat-checkbox [checked]="myLabels">Shyam</mat-checkbox>
+    </div>
+</div>
+
+<mat-dialog-actions align="end">
+        <button mat-raised-button class="btn-success" (click)="saveTeam()">Update</button>
+        <button mat-raised-button class="add-dark-hover btn-default" (click)="close()">Cancel</button>
+    </mat-dialog-actions> 

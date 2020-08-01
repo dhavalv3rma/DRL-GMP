@@ -1,0 +1,118 @@
+<div fxLayout="row wrap">
+        <div class="w-100">
+                <div class="flex-p">
+                        <div class="row wrap">
+                            <div class="col-xs-12" style="margin-right:0px !important; margin-top: 15px">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <div class="pills w-100">
+                                    </div>
+                                </div>
+            
+                                <div class="col-sm-6 pull-right" style="padding: 0 0 0 0!important;">
+                                        <button mat-raised-button class="pull-right add-hover-help btn-success-help" style="margin-left: 0px;">
+                                                <mat-icon>help_outline</mat-icon> Help
+                                            </button>
+                                    <button mat-raised-button class="pull-right add-hover btn-success margin-right-10" (click)="openoppurtunityDialog(null)">
+                                        <mat-icon>add</mat-icon> Add Contact
+                                    </button>
+                                    <button mat-raised-button color="primary" class="pull-right filter-hover margin-right-10"
+                                        (click)="filterToggle = !filterToggle">
+                                        <mat-icon>filter_list</mat-icon> Filter
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- <div fxLayout="row wrap" > -->
+                            <div fxLayout="row wrap" *ngIf="filterToggle">
+                                <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p">
+                                    <mat-card class="filter">
+                                        <mat-card-content>
+                                            <div class="row col-lg-12">
+                                                <div class="col-lg-4">
+                                                    <select class='select-option form-control' required [(ngModel)]='projectOptionSelected'
+                                                        (ngModelChange)='onProjectOptionsSelected($event)'>
+                                                        <option class='option' [ngValue]="undefined" selected disabled>--By
+                                                            Client Name--</option>
+                                                        <option class='option' *ngFor='let option of clientnameOptions' [value]="option">{{option}}</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <select class='select-option form-control' required [(ngModel)]='projectOptionSelected'
+                                                        (ngModelChange)='onProjectOptionsSelected($event)'>
+                                                        <option class='option' [ngValue]="undefined" selected disabled>--By
+                                                            Contact Name--</option>
+                                                        <option class='option' *ngFor='let option of contactnameOptions' [value]="option">{{option}}</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-lg-2">
+                                                    <button type="button" class="btn btn-success add-hover pull-right">Search</button>
+                                                </div>
+                                                <div class="col-lg-2" style="padding-left: 0px!important;width: 96px;padding-right: 30px;">
+                                                    <button type="button" class="reset-hover btn btn-success-gray  pull-right">Reset</button>
+                                                </div>
+                                            </div>
+                                        </mat-card-content>
+                                    </mat-card>
+                                </div>
+                            </div>
+            
+                        </div>
+                    </div>
+            <div fxLayout="row wrap" style="margin-top:-3px;">
+                <div class="table-responsive w-100 flex-p" style="padding-left:-2px!important">
+                    <table id="example2" class="table table-bordered table-hover">
+                        <thead class="tbl-head">
+                            <tr class="tr-grid-header">
+                                <th style="padding-left: 5px!important;">Client</th>
+                                <th style="padding-left: 5px!important;">Name</th>
+                                <th style="padding-left: 5px!important;">Designation</th>
+                                <th style="padding-left: 5px!important;">Phone No.</th>
+                                <th style="padding-left: 5px!important;">Email</th>
+                                <th style="padding-left: 5px!important;">Region</th>
+                                <th style="padding-left: 5px!important;">City</th>
+                                <th style="padding-left: 5px!important;">Post Code</th>
+                                <th style="padding-left: 5px!important;">Primary Contact</th>
+                                <th style="padding-left: 5px!important;">Billing Contact</th>
+                                <th style="padding-left: 5px!important;">Created Date</th>
+                                <th style="padding-left: 5px!important;">Active</th>
+                                <th style="padding-left: 5px!important;">Manage</th>
+                            </tr>
+                        </thead>
+                        <tbody> 
+                            <tr *ngFor="let item of contacts">
+                                <td style="padding-left: 5px!important;"><a [title]="item.clientName">{{item.clienttype}}</a></td>
+                                <td style="padding-left: 5px!important;">{{item.name}}</td>
+                                <td style="padding-left: 5px!important;">{{item.designation}}</td>
+                                <td style="padding-left: 5px!important;">{{item.phone}}</td>
+                                <td style="padding-left: 5px!important;">{{item.email}}</td>
+                                <td style="padding-left: 5px!important;">{{item.region}}</td>
+                                <td style="padding-left: 5px!important;">{{item.city}}</td>
+                                <td style="padding-left: 5px!important;">{{item.postcode}}</td>
+                                <td style="padding-left: 5px!important;">{{item.primarycontact}}</td>
+                                <td style="padding-left: 5px!important;">{{item.billingcontact}}</td>
+                                <td style="padding-left: 5px!important;">{{item.createddate}}</td>
+                                <td style="padding-left: 5px!important;"><input type="checkbox" style="margin:6px 0 0 18px"></td>
+                                <td style="text-align: center!important">
+                                    <a title="Edit project Details" style="margin-right: 10px; cursor: pointer;font-size:16px!important;color:#0987e8d1">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a>
+                                        <i style="cursor: pointer;font-size:16px!important;" title="Delete" class="fa fa-trash red"></i>
+                                    </a>
+                                </td>
+                                
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+    
+    
+            <!-- <div *ngIf="!isGrid">
+              <app-map-view></app-map-view>
+          </div> -->
+        </div>
+    </div>
+    
+    <!-- <div *ngIf="!leads" fxLayout="column" fxLayoutAlign="center center" class="lead-spinner">
+      <mat-spinner color="primary"></mat-spinner>
+    </div> -->

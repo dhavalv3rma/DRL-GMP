@@ -1,0 +1,56 @@
+<div fxLayout="row wrap" #resizedDiv>
+    <div class="flex-p w-100">
+
+        <div class="table-responsive">
+            <table id="example2" style="margin-top: 10px" class="table table-bordered table-hover table-striped">
+                <thead class="tbl-head">
+                    <tr class="tr-grid-header">
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Previous Value</th>
+                        <th>New Value</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Grid Length</td>
+                        <td>No of records to display in agrid can be defined from here</td>
+                        <td>10</td>
+                        <td>
+                            <div>
+                                <mat-select placeholder="--Select--" class="form-control" id="email">
+                                    <mat-option value="10">10</mat-option>
+                                    <mat-option value="25">25</mat-option>
+                                    <mat-option value="50">50</mat-option>
+                                    <mat-option value="100">100</mat-option>
+                                </mat-select>
+                            </div>
+                        </td>
+                        <td>
+                            <button mat-raised-button class="add-hover btn-success" style="height: 33px;"> Save
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Notification Email</td>
+                        <td>Default Admin Notification Email</td>
+                        <td>navin.malik@optionm.net</td>
+                        <td>
+                            <div>
+                                <input type="email" class="form-control" id="email" placeholder="Enter Notification Email">
+                            </div>
+                           
+                        </td>
+                        <td>
+                            <button mat-raised-button class=" add-hover- btn-success" style="height: 33px;"> Save
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</div>

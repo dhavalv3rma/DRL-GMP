@@ -1,0 +1,114 @@
+<div fxLayout="row wrap" #resizedDiv>
+  <div class="flex-p w-100">
+    <div class="row" style="margin-bottom:14px;">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="w-100 flex-p">
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="w-100 flex-p">
+          <button mat-raised-button class="add-hover pull-right" style="background:#229494;color: white;" (click)="openDiaryDialog(null)"><mat-icon>add</mat-icon>&nbsp;Add
+          Item</button>
+          <button mat-raised-button color="primary" class="pull-right filter-hover margin-right-10" (click)="filterToggle = !filterToggle">
+                <mat-icon>filter_list</mat-icon> Filter
+            </button>
+        </div>
+      </div>
+    </div>
+
+    <div fxLayout="row wrap" *ngIf="filterToggle">
+            <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p margins">
+              <mat-card class="filter">
+                <mat-card-content>
+                  <div class="row">
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                      <select class="form-control">
+                        <option value="" disabled selected> -- Select Agenda -- </option>
+                        <option value="2016">Objective</option>
+                        <option value="2017">Scope</option>
+                        <option value="2018">Schedule</option>
+                        <option value="2019">Information Request</option>
+                        <option value="2019">Assessment Standards</option>
+                        <option value="2019">Proposed Itinerary</option>
+                        <option value="2019">Reporting</option>
+                      </select>
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                        <button class="add-hover btn btn-success">Go</button>
+                      </div>
+                  </div>
+                  <!-- <div class="row">
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                      <input type="text" [(ngModel)] = "name_filter" onCopy="return false" onPaste="return false" class="form-control" (keypress)="omit_special_number_char($event)" placeholder="Search by User Name" >
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                      <select class="form-control" [(ngModel)] = "status_filter">
+                        <option selected value=""> -- Select Status -- </option>
+                        <option value="1">Active</option>
+                        <option value="0">Inactive</option>
+                      </select>
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                      <button class="add-hover btn btn-success" (click)="filterUsers()">Search</button>
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="margin-left: -18px;">
+                      <button class="btn filter-hover" style="background-color:#37474f; color:#fff !important" (click)="clearFilters()">Clear</button>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>                            
+                  </div> -->
+                </mat-card-content>
+              </mat-card>
+            </div>
+          </div>
+
+
+    <div class="table-responsive">
+        <table id="example2" class="table table-bordered table-hover table-striped">
+            <thead class="tbl-head">
+                <tr class="tr-grid-header">
+                    <th>Date</th>
+                    <th>Agenda</th>
+                    <th>Notes</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of tableList">
+                    <td>{{item.date}}</td>
+                    <td>{{item.agenda}}</td>
+                    <td>{{item.notes}}</td>
+                    <!-- <td>
+                        <a 
+                        class="status"
+                        mwlConfirmationPopover
+                        [popoverTitle]="popoverStatusTitle"
+                        [popoverMessage]="popoverStatusMessage"
+                        placement="left"
+                        (confirm)="updateLookup(item.lookup_id, !item.is_active, 'status');"
+                        (cancel)="cancelClicked = true">
+                        {{item.is_active?'Active':'Inactive'}}
+                        </a>
+                    </td> -->
+                    <td>
+                        <a (click)="openDiaryDialog(item)" style="margin-right: 10px; cursor: pointer;">
+                            <i title="Edit Observation" class="fa fa-edit"></i>
+                        </a>
+                        <a mwlConfirmationPopover
+                        [popoverTitle]="popoverTitle"
+                        [popoverMessage]="popoverMessage"
+                        placement="left"
+                        (confirm)="deleteObservation()"
+                        (cancel)="cancelClicked = true">
+                            <i style="cursor: pointer;" title="Delete Observation" class="fa fa-trash red"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+  </div>
+</div>
+  

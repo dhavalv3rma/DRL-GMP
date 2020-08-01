@@ -1,0 +1,59 @@
+<div fxLayout="row wrap" #resizedDiv>
+  <div class="flex-p w-100">
+
+      <div class="row" style="margin-bottom:14px;">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <div class="w-100 flex-p">
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <div class="w-100 flex-p">
+                    <button mat-raised-button class="pull-right add-hover-help btn-success-help" style="margin-left: 10px;">
+                            <mat-icon>help_outline</mat-icon> Help
+                        </button>
+                  <button mat-raised-button class="pull-right add-hover btn-success" (click)="openUserDialog(null)">
+                      <mat-icon>person_add</mat-icon> Add Role
+                  </button>
+              </div>
+          </div>
+      </div>
+
+     
+      <div fxLayout="row wrap">
+          <div class="table-responsive">
+              <table id="example2" class="table table-bordered table-hover">
+                  <thead class="tbl-head">
+                      <tr class="tr-grid-header">
+                          <th>Role Name</th>
+                          <th>Permissions</th>
+                          <th>Users Assigned</th>
+                          <th class="text-center">Status</th>
+                          <th class="text-center">Actions</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let role of roles">
+                      <td>{{role.role_name}}</td>
+                      <td><a [routerLink]="" ng-disabled="true">{{role.permissions}}</a></td>
+                      <td ><a >{{role.users}}</a></td>
+                      <td class="pad-left inner-screen text-center">
+                        <a (click)="role.status = ! role.status">
+                            <span *ngIf="!role.status" style="color:red">Inactive</span>
+                            <span *ngIf="role.status">Active</span>
+                        </a>
+                    </td>
+                    <td class="text-center">
+                        <a matTooltip="Edit Details" style="margin-right: 10px; cursor: pointer;font-size:16px!important;color:#0987e8d1">
+                          <i class="fa fa-edit"></i>
+                        </a>
+                        <a>
+                          <i style="cursor: pointer;font-size:16px!important;" matTooltip="Delete" class="fa fa-trash red"></i>
+                        </a>
+                      </td>
+                  </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+</div>

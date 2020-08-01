@@ -1,0 +1,77 @@
+<div fxLayout="row wrap">
+  <div class="col-12 w-100">
+    <div class="w-100 flex-p">
+      <div class="row wrap">
+        <div class="col-12">
+          <div class="w-100 flex-p">
+            <button mat-raised-button class=" mx-3 btn-success pull-right filter-hover"
+              (click)="alert()">
+              <mat-icon>add</mat-icon> Add to report
+            </button>
+            <button mat-raised-button color="primary" class="pull-right filter-hover"
+              (click)="filterToggle = !filterToggle">
+              <mat-icon>filter_list</mat-icon> Configure
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex-p col-12 w-100" *ngIf="filterToggle">
+      <mat-card class="filter">
+        <mat-card-content>
+          <div class="row">
+            <div class="row col-12">
+              <div class="col-4">
+                <mat-select class="form-control" placeholder="-- Select Year 1 --">
+                  <mat-option value="2016">2016</mat-option>
+                  <mat-option value="2017">2017</mat-option>
+                  <mat-option value="2018">2016</mat-option>
+                  <mat-option value="2019">2016</mat-option>
+                </mat-select>
+              </div>
+              <div class="col-4">
+                <mat-select class="form-control" placeholder="-- Select Year 2 --">
+                  <mat-option value="2016">2016</mat-option>
+                  <mat-option value="2017">2017</mat-option>
+                  <mat-option value="2018">2016</mat-option>
+                  <mat-option value="2019">2016</mat-option>
+                </mat-select>
+              </div>
+              <div class="col-3">
+                <mat-select class="form-control" placeholder="-- Select Group --" multiple>
+                  <mat-option value="2016">All</mat-option>
+                  <mat-option value="2017">CTO</mat-option>
+                  <mat-option value="2018">FTO</mat-option>
+                  <mat-option value="2019">R&D Centres</mat-option>
+                  <mat-option value="2019">CFA</mat-option>
+                </mat-select>
+              </div>
+              <div class="col-1">
+                <button class="add-hover btn btn-success pull-right">Go</button>
+              </div>
+            </div>
+            
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="row col-12 mt-3">
+      <div class="row col-12 my-4">
+        <input class="col-10 text-center text-heading "  type="text" value="Feedback of CAPA Clearance"> 
+        <div class="col-1"></div>
+        <button class="col-1  btn btn-success">Update</button>
+      </div>
+      <div class="row col-12 my-5 px-0">
+          <div class="col-12">
+            <app-capa-clear-chart></app-capa-clear-chart>
+          </div>
+          <div class="row col-12 my-3">
+            <span class="col-1 note-text"><b>Notes:</b></span>
+            <div class="col-11"><input class="form-control" type="text" ></div></div>
+            
+      </div>
+  </div>
+
+    </div>
+</div>

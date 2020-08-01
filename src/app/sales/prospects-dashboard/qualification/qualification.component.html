@@ -1,0 +1,27 @@
+<div class="w-100" style="margin-top:12px;">
+        <!-- <div class="w-100 flex-p"> -->
+                <div fxLayout="row wrap">
+                        <div class="table-responsive">
+                            <table class="table checklist-item">
+                                <thead class="tbl-head">
+                                    <tr class="tr-grid-header">
+                                        <th>Qualification Criteria (Qualified on 12-23-2018) </th>
+                                        <th>Remarks</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor='let item of checklistItems'>
+                                        <td style="vertical-align:middle;">
+                                            <label for="{{'checklist_'+item.id}}"><input type="checkbox" id="{{'checklist_'+item.id}}" checked disabled>   &nbsp;&nbsp;{{item.criteria}}</label>
+                                        </td>
+                                        <td>
+                                            <textarea disabled class="form-control txtarea" rows="2" placeholder="Remarks">{{item.remarks}}</textarea>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                   </div>
+       
+   <!--  </div> -->
+</div>

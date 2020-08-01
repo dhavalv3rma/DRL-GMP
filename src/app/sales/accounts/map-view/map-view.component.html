@@ -1,0 +1,130 @@
+<div fxLayout="row wrap" #resizedDiv>
+  <div class="w-100">
+          <div class="flex-p">
+                  <div class="row wrap">
+                      <div class="col-lg- col-md-4 col-sm-4 col-xs-4">
+                          <div class="pills w-100 flex-p">
+                              <!-- <ul class="nav nav-pills ">
+                                  <li routerLinkActive="active"><a mat-raised-button [routerLink]="['/salesglobal/sales/accounts/gridview']"> <mat-icon>grid_on</mat-icon> Grid View</a></li>
+                                  <li routerLinkActive="active"><a mat-raised-button [routerLink]="['/salesglobal/sales/accounts/mapview']"><mat-icon>place</mat-icon> Map View</a></li>
+                              </ul> -->
+                          </div>
+                      </div>
+                      <div class="col-xs-8"  style="margin-right:0px !important">
+                          <div class="w-100 flex-p">
+              
+                              <button mat-raised-button class="add-hover pull-right btn-success">
+                                  <mat-icon>add</mat-icon> Add
+                                  Account
+                              </button>
+                              <button mat-raised-button color="primary" class="pull-right filter-hover margin-right-10" (click)="filterToggle = !filterToggle">
+                                  <mat-icon>filter_list</mat-icon> Filter
+                              </button>
+                              <mat-paginator style="margin-top:-8px" class="pull-right margin-right-10" [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" [hidePageSize] = 'false' showFirstLastButtons></mat-paginator>
+                              <!-- <h5 class="pull-right" style="margin-top:12px">Prospects Showing :</h5> -->
+                          </div>
+                      </div>
+
+                  </div>
+              </div>
+
+      <div class="row ">
+          <div class="col-xs-6">
+                  
+          </div>
+          
+      </div>
+      
+      <div fxLayout="row wrap">
+          <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p w-100" *ngIf="filterToggle">
+              <mat-card class="filter">
+                  <mat-card-content>
+                      <div class="row">
+                          <div class="col-lg-2">
+                              
+                              <mat-select placeholder="--Search by Campaign--" multiple class="form-control">
+                                  <!-- <mat-option [value]="location" selected disabled  >--Search by location--</mat-option> -->
+                                  <mat-option *ngFor="let option of campaignOptions" [value]="">{{option}}</mat-option>
+                              </mat-select>
+
+                              
+                              
+                              
+                              <!-- <select class='select-option form-control' required [(ngModel)]='campaignOptionSelected' (ngModelChange)='onCampaignOptionsSelected($event)'>
+                                  <option class='option' [ngValue]="undefined" selected disabled  >--Search by Campaign--</option>
+                                  <option class='option' *ngFor='let option of campaignOptions' [value]="option">{{option}}</option>
+                              </select> -->
+                          </div>
+
+                          <!-- <div class="col-lg-2">
+                                  <mat-select placeholder="--Search by Prospects--" multiple class="form-control"> -->
+                                          <!-- <mat-option [value]="location" selected disabled  >--Search by location--</mat-option> -->
+                                      <!-- <mat-option *ngFor="let option of prospectsOptions" [value]="">{{option}}</mat-option>
+                                  </mat-select>
+                          </div> -->
+                          <div class="col-lg-2">
+                              
+                              
+                                  
+                                      <!-- <mat-card-header>                
+                                          <mat-card-subtitle>
+                                              
+                                          </mat-card-subtitle>
+                                      </mat-card-header> -->
+                                      
+                                          
+                                              <mat-select placeholder="--Search by Location--" multiple class="form-control">
+                                                  <!-- <mat-option [value]="location" selected disabled  >--Search by location--</mat-option> -->
+                                                  <mat-option *ngFor="let location of locationList" [value]="">{{location}}</mat-option>
+                                              </mat-select>
+                                          
+                                      
+                                  
+                               
+                              
+                              
+                              
+                              
+                              <!-- <select class='select-option form-control' required [(ngModel)]='locationOptionSelected' (ngModelChange)='onLocationOptionsSelected($event)'>
+                                  <option class='option' [ngValue]="undefined" selected disabled  >--Search by location--</option>
+                                  <option class='option' *ngFor='let option of locationOptions' [value]="option">{{option}}</option>
+                              </select> -->
+                          </div>
+
+                          <div class="col-lg-2">
+                                  <mat-select placeholder="--Search by Kanban--" multiple class="form-control">
+                                      <!-- <mat-option [value]="location" selected disabled  >--Search by location--</mat-option> -->
+                                      <mat-option *ngFor="let option of stepsOptions" [value]="">{{option}}</mat-option>
+                                  </mat-select>
+                              </div>
+                          
+                          <div class="col-lg-2">
+                              
+                              <mat-select placeholder="--Search by Year--" single class="form-control">
+                                  <!-- <mat-option [value]="location" selected disabled  >--Search by location--</mat-option> -->
+                                  <mat-option *ngFor="let option of yearOptions" [value]="">{{option}}</mat-option>
+                              </mat-select>
+                              
+                              
+                              
+                              
+                              <!-- <select class='select-option form-control' required [(ngModel)]='yearOptionSelected' (ngModelChange)='onYearOptionsSelected($event)'>
+                                  <option class='option' [ngValue]="undefined" selected disabled  >--Search by year--</option>
+                                  <option class='option' *ngFor='let option of yearOptions' [value]="option">{{option}}</option>
+                              </select> -->
+                          </div>
+                          
+                          <div class="col-lg-1">
+                              <button type="button" class="add-hover btn btn-success  pull-right">Search</button>
+                          </div>
+                          <div class="col-lg-2"></div>
+                          
+                      </div>
+                  </mat-card-content>
+              </mat-card>
+          </div>
+      </div>
+
+
+  <app-google-maps></app-google-maps>
+

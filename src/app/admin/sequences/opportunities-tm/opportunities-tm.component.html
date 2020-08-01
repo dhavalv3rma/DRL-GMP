@@ -1,0 +1,64 @@
+
+<div fxLayout="row wrap" #resizedDiv>
+        <div class="flex-p w-100">
+            <div class="row wrap" style="margin-bottom:7px;">
+                <div class="col-sm-6">
+                    <div class="pills w-100 flex-p">
+                        <ul class="nav nav-pills">
+                                <li routerLinkActive="active"><a mat-raised-button [routerLink]="['/salesglobal/admin/steps/opportunities']"><mat-icon>highlight</mat-icon> Opportunities</a></li>
+                                <li routerLinkActive="active"><a mat-raised-button [routerLink]="['/salesglobal/admin/steps/prospects']"><mat-icon>outlined_flag</mat-icon> Prospects</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="w-100 flex-p">
+                        <button mat-raised-button class="add-hover pull-right" style="background:#229494;color: white;" (click)="openUserDialog(' Add Opportunity')"><mat-icon>add</mat-icon>&nbsp;Add
+                            Step</button>
+                    </div>
+                </div>
+            </div>
+
+                    <p-dataTable [value]="rows" [tableStyle]="{ 'table-layout': 'auto' }" [primeDragula]="bag"
+                        [dragulaModel]="rows" [dragulaOptions]="{ childContainerSelector: 'tbody', initAfterView: true }"
+                        #datatable>
+    
+                        <p-column *ngFor="let col of columns" [field]="col" [header]="col.header" [style]="{ width: textColumnWidth + '%' }">
+                            <ng-template pTemplate="body" let-col let-rowData="rowData">
+                                <div *ngIf="!rowData[editable]" style="cursor:move">
+                                    <div *ngIf="col.field.type === 'text'">
+                                        {{ rowData[col.field.field] }}
+                                    </div>
+                                    <div *ngIf="col.field.type === 'Move'" >
+                                        <span><i titile="Move column" class="fa fa-arrows" aria-hidden="true"></i> {{ rowData[col.field.field] }} </span>
+                                    </div>
+                                    <div *ngIf="col.field.field === 'Status'">
+                                        <a 
+                                            class="status"
+                                            >
+                                            {{rowData[col.field.field]?'Active':'Inactive'}}
+                                        </a>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </p-column>
+    
+                        <p-column header="Actions">
+                            <ng-template pTemplate="body" let-col let-rowData="rowData">
+                                <a (click)="openUserDialog('Edit Opportunity')" style="margin-right: 10px; cursor: pointer;">
+                                    <i title="Edit" class="fa fa-edit"></i>
+                                </a>
+
+                                <a >
+                                    <i style="cursor: pointer;" title="Delete User" class="fa fa-trash red"></i>
+                                </a>
+                            </ng-template>
+                        </p-column>
+    
+                    </p-dataTable>
+                
+                
+            
+        </div>
+    
+    </div>
+    

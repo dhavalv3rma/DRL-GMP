@@ -1,0 +1,55 @@
+<!--This page is used to add or edit prospects-->
+<h1 mat-dialog-title><span *ngIf="!prospect.id">Add</span><span *ngIf="prospect.id">Edit</span> Prospect</h1>
+<div mat-dialog-content>
+  <form class="form-horizontal" name="addProspects">
+    <div class="form-group">
+      <label class="control-label col-sm-4" >Prospect Name : </label>
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+        <input type="text" class="form-control" id="email" placeholder="Enter Prospect Name" autocomplete="off">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-4">Conatct Person : </label>
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+        <input type="text" class="form-control" id="email" placeholder="Enter Prospect Name" autocomplete="off">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-4">Designation : </label>
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+        <input type="text" class="form-control" id="email" placeholder="Enter Prospect Name" autocomplete="off">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-4">Contact Number : </label>
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+        <input type="number" class="form-control" id="email" placeholder="Enter Contact Number" autocomplete="off">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-4">Email : </label>
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+        <input type="email" class="form-control" id="email" placeholder="Enter Email" autocomplete="off">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4">Industry :</label>
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+        <select name="campaign" class='form-control' required [(ngModel)]='industryOptionSelected' (ngModelChange)='onIndustryOptionsSelected($event)'>
+            <option class='option' [ngValue]="undefined" selected disabled  >--Select Industry--</option>
+            <option class='option' *ngFor='let option of industryOptions' [value]="option">{{option}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-4" for="pwd">Address : </label>
+      <div class="col-sm-8">
+          <textarea class="form-control txtarea" rows="2" placeholder="Enter Address" autocomplete="off"></textarea>
+      </div>
+    </div>
+  </form>
+</div>
+<mat-dialog-actions align="end">
+  <button mat-raised-button class="add-dark-hover btn-default" (click)="close()">Cancel</button>
+  <button mat-raised-button class="add-hover btn-success" (click)="saveProspect()"><span *ngIf="!prospect.id">Save</span><span *ngIf="prospect.id">Update</span></button>
+</mat-dialog-actions>

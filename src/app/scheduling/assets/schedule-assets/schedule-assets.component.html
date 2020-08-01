@@ -1,0 +1,121 @@
+<div fxLayout="row wrap" #resizedDiv>
+    <div class="row col-sm-12" style="padding-right: 0px !important">
+        <div class="pills w-100 col-sm-6">
+            <ul class="nav nav-pills ">
+                <li routerLinkActive="active" style="margin-right: 10px">
+                    <a mat-raised-button class="remove_top_bottom_padding mat-raised-button" routerLink="/IBW/scheduling/assets/schedule-assets/calendar-view">
+                        <mat-icon>calendar_today</mat-icon> Calender View
+                    </a>
+                </li>
+                <li routerLinkActive="active" style="margin-right: 10px">
+                    <a mat-raised-button class="remove_top_bottom_padding mat-raised-button" routerLink="/IBW/scheduling/assets/schedule-assets/grid-view">
+                        <mat-icon>grid_on</mat-icon> Grid View
+                    </a>
+
+                </li>
+
+            </ul>
+        </div>
+        <div class="w-100 col-sm-6" style="margin-right:0px !important;">
+            <div class="">
+                <button mat-raised-button class="pull-right add-hover-help btn-success-help" style="margin-left: 5px;background: #ecdf29 !important;color: black !important;">
+                    <mat-icon>help_outline</mat-icon> Help
+                </button>
+                <button mat-raised-button class="pull-right add-hover btn-success" (click)="openScheduleDialog(null)" style="margin-right: 5px;">
+                    <mat-icon>add</mat-icon> Assign
+                </button>
+                <button mat-raised-button color="primary" class="pull-right filters-hover margin-right-10" (click)="filterToggle = !filterToggle">
+                    <mat-icon>filter_list</mat-icon> Filter
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div fxLayout="row wrap" *ngIf="filterToggle" style="margin-top: 25px">
+        <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p w-100">
+            <mat-card class="filter">
+                <mat-card-content>
+                    <div class="row col-sm-12">
+                        <div class="col-sm-4">
+                            <div class="col-sm-4">Party Chief</div>
+                            <div class="col-sm-8">
+                                <mat-select class='select-option form-control' placeholder="--Select Party Chief--">
+                                    <mat-option [value]="1">Damian</mat-option>
+                                    <mat-option [value]="2">Thomas </mat-option>
+                                    <mat-option [value]="3">David </mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="col-sm-4">Field Assistant</div>
+                            <div class="col-sm-8">
+                                <mat-select class='select-option form-control' placeholder="--Select Field Assistant--">
+                                    <mat-option [value]="1">Jake </mat-option>
+                                    <mat-option [value]="2">Connor </mat-option>
+                                    <mat-option [value]="3">Callum</mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="col-sm-4">Assigned Asset</div>
+                            <div class="col-sm-8">
+                                <mat-select class='select-option form-control' placeholder="--Search by Asset--">
+                                    <mat-option [value]="1">Cosmolabe</mat-option>
+                                    <mat-option [value]="2">Dioptra</mat-option>
+                                    <mat-option [value]="3">Tachymeter</mat-option>
+                                    <mat-option [value]="4">Graphometer</mat-option>
+                                    <mat-option [value]="5">Total station</mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row col-sm-12" style="margin-top:20px">
+
+                        <div class="col-sm-4">
+                            <div class="col-sm-4">From Date</div>
+                            <div class="col-sm-8">
+                                <input type="text" class='select-option form-control' placeholder="From Date" onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="col-sm-4">To Date</div>
+                            <div class="col-sm-8">
+                                <input type="text" class='select-option form-control' placeholder="To Date" onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+
+                            <div class="col-sm-4">Keyword</div>
+                            <div class="col-sm-8">
+                                <input type="text" class='form-control' placeholder="Enter Keyword">
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="row col-sm-12" style="margin-top:20px">
+                        <div class="col-sm-8"></div>
+                        <div class="col-sm-4">
+                            <a (click)="filterToggle = !filterToggle" class="pull-right" style="font-size: 25px;">
+                                <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                            </a>
+                            <button mat-raised-button class="pull-right btn-success-gray" style="margin-right: 8px;background: #686968fa !important;color: white !important;">
+                                <mat-icon>settings_backup_restore</mat-icon> Reset
+                            </button>
+                            <!-- <button mat-raised-button class="pull-right add-hover btn-success">
+                                      <mat-icon>cloud_download</mat-icon> Download CSV
+                                  </button> -->
+                            <button mat-raised-button color="primary" class="pull-right filters-hover margin-right-10">
+                                <mat-icon>youtube_searched_for</mat-icon> Search
+                            </button>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+
+    <div class="col-sm-12" style="padding: 0px 0px 0px 10px;">
+        <router-outlet></router-outlet>
+    </div>
+</div>

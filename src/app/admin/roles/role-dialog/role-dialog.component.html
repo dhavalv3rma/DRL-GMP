@@ -1,0 +1,28 @@
+<h1 mat-dialog-title><span *ngIf="!user">Add</span><span *ngIf="user">Edit</span> Role</h1>
+<div mat-dialog-content>
+
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">Role Name : </label>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <input type="text" class="form-control" id="role" placeholder="Enter Role Name">
+            </div>
+        </div>
+       
+        <!-- <div class="form-group">
+            <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4 add-member-label" for="pwd">Status : </label>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <select name="" id="" class="form-control">
+                    <option   selected disabled>Select status</option>
+                    <option  >Active</option>
+                    <option  >Inactive</option>
+                </select>
+            </div>
+        </div> -->
+    </form>
+</div>
+<mat-dialog-actions align="end">
+    <button mat-raised-button class="add-hover btn-success" (click)="saveUser()" [mat-dialog-close]="'test'"><span *ngIf="!user">Save</span><span
+            *ngIf="user">Update</span></button>
+    <button mat-raised-button class="add-dark-hover btn-default" (click)="close()">Cancel</button>
+</mat-dialog-actions> 

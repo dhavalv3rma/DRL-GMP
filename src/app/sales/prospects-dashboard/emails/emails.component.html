@@ -1,0 +1,130 @@
+<div fxLayout="row wrap" style="margin-top: -15px;padding: 0px 5px 0px 5px;">
+  <div class="w-100 flex-p">
+  <!-- /.box-header
+  <div class="box-body">
+    <ul class="timeline">
+      <li>
+        <i class="fa fa-comments bg-blue"></i>
+        <div class="timeline-item">
+
+          <a class="btn btn-success btn-flat btn-xs">Appraisal</a><span class="pull-right"> <a (click)="fnAddTimelineEventModal(1)">
+              <i class="fa fa-pencil"></i></a> <a (click)="deleteModal.show()"> <i class="fa fa-trash-o red"></i></a></span>
+          <h3 class="timeline-header"><a href="javascript:;">Vaibhav</a></h3>
+          <div class="timeline-body">
+            <p>As the annual appraisal is due for the individual hence an increment in the pay is being
+              awarded.</p>
+          </div>
+          <div class="timeline-footer">
+            <span class="time"><i class="fa fa-calendar" [owlDateTimeTrigger]="dt1"></i> Tue, 1 Nov</span>
+          </div>
+        </div>
+      </li>
+
+      <li>
+        <i class="fa fa-comments bg-blue"></i>
+        <div class="timeline-item">
+
+          <a class="btn btn-success btn-flat btn-xs">Q1 challenge</a><span class="pull-right"> <a (click)="fnAddTimelineEventModal(1)">
+              <i class="fa fa-pencil"></i></a> <a (click)="deleteModal.show()"> <i class="fa fa-trash-o red"></i></a></span>
+          <h3 class="timeline-header"><a href="javascript:;">Pranab Ray</a></h3>
+          <div class="timeline-body">
+            <p>In recognition towards your contribution towards R&D in IOT a new project was awarded and hence
+              Q1 is awarded.</p>
+          </div>
+          <div class="timeline-footer">
+            <span class="time"><i class="fa fa-calendar" [owlDateTimeTrigger]="dt1"></i> Tue, 29 Nov</span>
+          </div>
+        </div>
+      </li>
+
+      <li>
+        <i class="fa fa-comments bg-blue"></i>
+        <div class="timeline-item">
+
+          <a class="btn btn-success btn-flat btn-xs">Q0 challenge</a><span class="pull-right"> <a (click)="fnAddTimelineEventModal(1)">
+              <i class="fa fa-pencil"></i></a> <a (click)="deleteModal.show()"> <i class="fa fa-trash-o red"></i></a></span>
+          <h3 class="timeline-header"><a href="javascript:;">Anji</a></h3>
+          <div class="timeline-body">
+            <p>As a contribution towards generating lead for new prospect and following up the closure of a
+              deal Q0 is being awarded as a token of appreciation.</p>
+          </div>
+          <div class="timeline-footer">
+            <span class="time"><i class="fa fa-calendar" [owlDateTimeTrigger]="dt1"></i> Tue, 29 Nov</span>
+          </div>
+        </div>
+      </li>
+    </ul>
+    /.table-responsive
+  </div> -->
+
+
+
+
+
+
+
+  
+        <p style="margin-top:3px;">
+            <span style="font-size: 18px;font-weight: bold;">Add Email Content:</span>
+        </p>
+<form class="form-horizontal"  style="margin-top: 20px;" >
+<div class="form-group">
+  <!-- <label class="control-label col-sm-4">Content:</label> -->
+  <div class="col-sm-12">
+      <textarea rows="4" class="form-control txtarea" id="content" placeholder="Write here"></textarea>
+  </div>
+</div>
+<div class="form-group">
+    <div class="col-lg-3 col-md-3 col-sm-3">
+        <select class='select-option form-control' required [(ngModel)]='communicationOptionSelected' (ngModelChange)='onCommunicationOptionsSelected($event)' name="communication">
+                <option class='option' [ngValue]="undefined" selected disabled>--Communication Type--</option>
+                <option class='option' *ngFor='let option of communicationOptions' [value]="option">{{option}}</option>
+         </select>
+</div>
+ <div class="col-sm-3">
+    <div class="input-icon right">
+        <i class="fa fa-calendar" [owlDateTimeTrigger]="dt1"></i>
+        <input class="form-control" placeholder="MM/DD/YYYY" class="form-control" id="dob" [(ngModel)]="dateTime1" [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" name="dt1">
+        <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+    </div>
+ </div>
+ <div class="col-sm-2" style="margin-top: -4px;margin-right: 50px;">
+     <button type="button" class="add-hover btn btn-success"><i class="fa fa-paper-plane"></i>Comment</button>
+ </div>
+</div>
+
+  <!-- <div class="form-group">
+  <label class="control-label col-sm-4">Name:</label>
+  <div class="col-sm-6">
+      <input type="email" class="form-control" id="email" placeholder="Enter notes name">
+  </div>
+</div> -->
+
+<!-- <button type="button" class="btn btn-primary" (click)="goBack()" style="float: right;"><span class="glyphicon glyphicon-chevron-left"></span>Back</button> -->
+</form>
+      
+        <p style="margin-top:5px;">
+            <span class="mr-8" style="font-size: 18px;font-weight: bold;">Emails History:</span>
+        </p>
+      <mgl-timeline [toggle]="toggle" [alternate]="alternate">
+        <mgl-timeline-entry *ngFor="let entry of entries; let i = index;" (expand)="onExpandEntry($event, i)">
+          <mgl-timeline-entry-header [class] = 'entry.headerClass' (click)="onHeaderClick($event)">
+            <div style="margin-bottom:10px;">
+              <i class="{{entry.element}}" style="float: left">&nbsp;&nbsp;&nbsp;</i>
+              <b style="float: left">{{entry.header}}</b>&nbsp;&nbsp;&nbsp;&nbsp;
+              <span style="float:right;margin-top: -3px">&nbsp;&nbsp;&nbsp;<i class="fa fa-pencil" style="float: right !important; cursor: pointer;" (click)="openEditDialog(entry.content)">&nbsp;&nbsp;&nbsp;</i></span>&nbsp;&nbsp;&nbsp;
+              <b style="float: right">{{entry.date}}</b>
+            </div>
+            <div><p class="left-alignment">{{entry.content}}</p></div>
+          </mgl-timeline-entry-header>
+          
+          <mgl-timeline-entry-dot [class]="entry.class"
+          [size]="size"
+          (click)="onDotClick($event)"></mgl-timeline-entry-dot>
+          <!-- <mgl-timeline-entry-side>2018</mgl-timeline-entry-side> -->
+        </mgl-timeline-entry>
+      </mgl-timeline>
+      
+      
+    </div>
+  </div>

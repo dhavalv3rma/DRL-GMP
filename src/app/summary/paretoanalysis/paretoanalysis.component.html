@@ -1,0 +1,33 @@
+<div fxLayout="row mt-3">
+  <div class="w-100">
+    <div class="w-100 flex-p">
+      <div class="row wrap">
+        <div class="col-12">
+          <div class="w-100 flex-p">
+            <button mat-raised-button class="btn-success pull-right filter-hover"
+              (click)="alert()">
+              <mat-icon>add</mat-icon> Add to report
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-100 flex-p">
+      <div class="row col-12 mt-3">
+      <div class="row col-12 my-4">
+        <input class="col-10 text-center text-heading "  type="text" value="Analysis of Internal Observations"> 
+        <div class="col-1"></div>
+        <button class="col-1  btn btn-success">Update</button>
+      </div>
+      <div class="col-12 p-0"><ckeditor [editor]="Editor" data="<p>Upon application of Pareto, 85% of observations i.e., 2012 observations out of 2318 observations were from 5 categories and considered fragile system. <br><br> These are:
+        <br>
+        1. Quality Oversight<br>
+        2. Laboratory testing and Data Management.<br>
+        3. Facility and Equipment Controls.<br>
+        4. Documentation & Document Control.<br>
+        5. Control over Computerized systems.</p>"></ckeditor></div>
+    </div>
+  </div>
+</div>
+</div>
+

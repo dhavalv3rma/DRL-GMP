@@ -1,0 +1,34 @@
+<div fxLayout="row wrap" #resizedDiv>
+    <div class="flex-p w-100">
+        <h1 mat-dialog-title>Upates</h1><hr>
+        
+            <div class="table-responsive">
+                <table id="example2" class="table table-bordered table-hover eventstbl">
+                        <thead class="tbl-head">
+                                <tr class="tr-grid-header">
+                                   <th>Field</th>
+                                   <th>Previous</th>
+                                   <th>Revised</th>
+                                </tr>
+                             </thead>
+                             <tbody>
+                                <tr data-key="1452">
+                                   <td>Site</td>
+                                   <td>CTO-1</td>
+                                   <td>CTO 1</td>
+                                </tr>
+                                <tr data-key="1451">
+                                    <td>Status</td>
+                                    <td>Inactive</td>
+                                    <td>Active</td>
+                                </tr>
+                             </tbody>
+                    
+                </table>
+            </div>
+
+    </div>
+</div>
+<mat-dialog-actions align="end">
+    <button mat-raised-button class="add-dark-hover btn-default" (click)="close()">Close</button>
+</mat-dialog-actions> 

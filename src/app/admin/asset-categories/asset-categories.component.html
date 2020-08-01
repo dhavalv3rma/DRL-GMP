@@ -1,0 +1,48 @@
+<div fxLayout="row wrap" #resizedDiv>
+    <div class="flex-p w-100">
+  
+        <div class="col-sm-7" style="padding: 0px 0px 20px 0px !important;">
+            <button mat-raised-button class="pull-right add-hover-help-job btn-success-help-job" style="margin-left: 2px;">
+                <mat-icon>help_outline</mat-icon> Help
+            </button>
+            <button mat-raised-button class="pull-right add-hover btn-success margin-right-10" (click)="AddAssetCategoryDialog()">
+                <mat-icon>add</mat-icon> Add Asset Category
+            </button>
+        </div>
+        
+            <div class="table-responsive col-sm-7" style="padding:0px !important">
+                <table id="example2" class="table table-bordered table-hover">
+                    <thead class="tbl-head">
+                        <tr class="tr-grid-header">
+                            <th>Asset Category</th>
+                            <th class="text-center">Status</th>
+                            <th class="text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of AssetCategoryData">
+                            <td>{{item.assetCategory}}</td>
+                            <td class="pad-left inner-screen text-center">
+                                <a (click)="item.status = ! item.status">
+                                    <span *ngIf="!item.status" style="color:red">Inactive</span>
+                                    <span *ngIf="item.status">Active</span>
+                                </a>
+                            </td>
+                            <td class="text-center">
+                                <a matTooltip="Edit Details" style="margin-right: 10px; cursor: pointer;font-size:16px!important;color:#0987e8d1">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                                <a>
+                                    <i style="cursor: pointer;font-size:16px!important;" matTooltip="Delete" class="fa fa-trash red"></i>
+                                </a>
+                            </td>
+        
+                        </tr>
+                    </tbody>
+                    
+                </table>
+            </div>
+      
+    </div>
+  </div>
+  

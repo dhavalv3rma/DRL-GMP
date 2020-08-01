@@ -1,0 +1,100 @@
+<!--This page is used to add or edit leads-->
+<div>
+    <h1 mat-dialog-title>Add RFQ</h1>
+    <hr>
+
+    <div mat-dialog-content>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label col-sm-4 add-member-label">Quote Number: </label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" placeholder="Enter quote number" required>
+                </div>
+                <label class="col-sm-2 control-label col-sm-4 add-member-label">Client: </label>
+                <div class="col-sm-4">
+                    <mat-select name="survey" placeholder="--Select Client--" class='form-control' required>
+                        <mat-option class='option' *ngFor='let option of ClientOptions' [value]="option">{{option}}</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class=" col-sm-2 control-label col-sm-4 add-member-label">Survey Type: </label>
+                <div class="col-sm-4">
+                    <mat-select name="survey" placeholder="--Select Survey Type--" class='form-control' required>
+                        <mat-option class='option' *ngFor='let option of surveyOptions' [value]="option">{{option}}</mat-option>
+                    </mat-select>
+                </div>
+                <label class="col-sm-2 control-label col-sm-4 add-member-label">Account Manager: </label>
+                <div class="col-sm-4">
+                    <mat-select name="survey" placeholder="--Select Account Manager--" class='form-control' required>
+                        <mat-option class='option' *ngFor='let option of accountManagerOptions' [value]="option">{{option}}</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class=" col-sm-2 control-label col-sm-4 add-member-label">Email: </label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" placeholder="Enter Email" required>
+                </div>
+                <label class=" col-sm-2 control-label col-sm-4 add-member-label">Phone No.: </label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" placeholder="Enter phone number" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class=" col-sm-2 control-label col-sm-4 add-member-label">Property Info: </label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" placeholder="Enter property Info" required>
+                </div>
+                <label class=" col-sm-2 control-label col-sm-4 add-member-label">Owner Name: </label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" placeholder="Enter Reg. Owner Name" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class=" col-sm-2 control-label col-sm-4 add-member-label">Quote Due: </label>
+                <div class="col-sm-4">
+                    <input type="text" class='select-option form-control' placeholder="From Date" onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}">
+                </div>
+                <label class=" col-sm-2 control-label col-sm-4 add-member-label">Survey Reason:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" placeholder="Enter Reg. Owner Name" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class=" col-sm-2 control-label col-sm-4">Address: </label>
+                <div class="col-sm-4" style="padding: 0 8px!important;">
+                    <textarea class="form-control txtarea" rows="2" placeholder="Enter Address" autocomplete="off"></textarea>
+                    <!-- <input type="text" class="form-control" placeholder="Enter address" required> -->
+                </div>
+                <label class=" col-sm-2 control-label col-sm-4">Remarks: </label>
+                <div class="col-sm-4">
+                    <textarea class="form-control txtarea" rows="2" placeholder="Enter Remarks" autocomplete="off"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                    <label class=" col-sm-2 control-label col-sm-4">Quote Admin</label>
+                    <div class="col-sm-4">
+                        <mat-select name="survey" placeholder="--Select Option--" class='form-control' required>
+                            <mat-option class='option' *ngFor='let option of quoteAdminOptions' [value]="option">{{option}}</mat-option>
+                        </mat-select>
+    
+                    </div>
+                <label class=" col-sm-2 control-label col-sm-4 add-member-label">How did you hear about us? </label>
+                <div class="col-sm-4">
+                    <mat-select name="survey" placeholder="--Select Option--" class='form-control' required>
+                        <mat-option class='option' *ngFor='let option of hearOptions' [value]="option">{{option}}</mat-option>
+                    </mat-select>
+
+                </div>
+            </div>
+        </form>
+    </div>
+    <mat-dialog-actions align="end">
+        <button mat-raised-button class="btn-success">Save</button>
+        <button mat-raised-button class="add-dark-hover btn-default" (click)="close()">Cancel</button>
+    </mat-dialog-actions>
+
+
+
+</div>

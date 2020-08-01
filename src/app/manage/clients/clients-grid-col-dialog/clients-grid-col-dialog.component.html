@@ -1,0 +1,59 @@
+<h2 class="example-h2" style="margin-left: 0px">
+  Grid veiw configuration</h2>
+<small>Please select the required columns in the grid, to view grid with specific columns</small>
+
+
+<div mat-dialog-content>
+    <form class="form-horizontal">
+        <div class="form-group" style="margin-top: 20px">
+            <mat-checkbox class="col-sm-6"  >Audit Title</mat-checkbox>
+            <mat-checkbox class="col-sm-6"   >Location</mat-checkbox>
+        </div>
+        <div class="form-group">
+            <mat-checkbox class="col-sm-6"  >Auditors</mat-checkbox>
+            <mat-checkbox class="col-sm-6"   >Agenda</mat-checkbox>
+        </div>
+
+        <div class="form-group">
+            <mat-checkbox class="col-sm-6"   >Dairy</mat-checkbox>
+            <mat-checkbox class="col-sm-6"  >CAPA</mat-checkbox>
+        </div>
+        <div class="form-group">
+                <mat-checkbox class="col-sm-6"  >Audit Report Configure</mat-checkbox>
+                <mat-checkbox class="col-sm-6"   >Action Plan</mat-checkbox>
+            </div>
+        <div class="form-group">
+            <mat-checkbox class="col-sm-6"   >Closure Report Configure</mat-checkbox>
+            <mat-checkbox class="col-sm-6"   >Date Scheduled</mat-checkbox>
+        </div>
+        <div class="form-group">
+            <mat-checkbox class="col-sm-6"   >Date Initiated</mat-checkbox>
+            <mat-checkbox class="col-sm-6"  >Date Reported</mat-checkbox>
+
+        </div>
+        <div class="form-group">
+            <mat-checkbox class="col-sm-6"   >Last Activity</mat-checkbox>
+            <mat-checkbox class="col-sm-6"  >Date Closed</mat-checkbox>
+        </div>
+        <div class="form-group">
+            <mat-checkbox class="col-sm-6"   >Timeline</mat-checkbox>
+            <mat-checkbox class="col-sm-6"  >Stage</mat-checkbox>
+        </div>
+      <div class="form-group">
+            <mat-checkbox class="col-sm-6"   >Progress</mat-checkbox>
+          <mat-checkbox class="col-sm-6"  >Status</mat-checkbox>
+      </div>
+      <div class="form-group">
+          <mat-checkbox class="col-sm-6"  >Actions</mat-checkbox>
+      </div>
+    </form>
+</div>
+
+
+
+
+
+<mat-dialog-actions align="end" class="col-sm-12">
+  <button mat-raised-button class="btn-success"  (click)="close()">Configure</button>
+  <button mat-raised-button class="add-dark-hover btn-default" (click)="close()">Cancel</button>
+</mat-dialog-actions>

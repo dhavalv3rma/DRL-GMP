@@ -1,0 +1,29 @@
+<div fxLayout="row wrap" #resizedDiv>
+  <div class="flex-p w-100">
+
+      <div class="row" style="margin-bottom:14px;">
+        <div class="col-sm-12">
+          <div class="pills w-100 flex-p">
+              <ul class="nav nav-pills ">
+                <li routerLinkActive="active" style="margin-right: 8px">
+                    <a  mat-raised-button class="remove_top_bottom_padding mat-raised-button" routerLink="/OM/admin/depts/depart">
+                        <mat-icon>track_changes</mat-icon> Departments
+                    </a>
+                </li>
+                <li routerLinkActive="active" style="margin-right: 8px">
+                    <a  mat-raised-button class="remove_top_bottom_padding mat-raised-button" routerLink="/OM/admin/depts/sections">
+                        <mat-icon>surround_sound</mat-icon> Sections
+                    </a>
+                </li>
+              </ul>
+          </div>
+      </div>
+         
+      </div>
+
+      <router-outlet></router-outlet>
+  </div>
+
+</div>
+
+

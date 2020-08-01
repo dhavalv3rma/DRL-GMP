@@ -1,0 +1,227 @@
+<div fxLayout="row wrap" #resizedDiv>
+    <div class="flex-p w-100">
+      <div class="row" style="margin-bottom:14px;">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+          <div class="w-100 flex-p">
+            <div class="pills w-100 flex-p">
+              <ul class="nav nav-pills ">
+                <li routerLinkActive="active">
+                  <a  mat-raised-button
+                    routerLink="/OM/sales/auditdashboard/observations/critical">
+                    <mat-icon>error</mat-icon> Critical
+                  </a>
+                </li>
+                <!-- <li routerLinkActive="active">
+                            <a (click)="isGridView = false" mat-raised-button routerLink="/OM/audits/mapview">
+                                <mat-icon>place</mat-icon> Map View
+                            </a>
+                        </li> -->
+                <li routerLinkActive="active">
+                  <a  mat-raised-button
+                    routerLink="/OM/sales/auditdashboard/observations/moderate">
+                    <mat-icon>warning</mat-icon> Moderate
+                  </a>
+                </li>
+                <li routerLinkActive="active">
+                  <a  mat-raised-button
+                    routerLink="/OM/sales/auditdashboard/observations/low">
+                    <mat-icon>notification_important</mat-icon> Low
+                  </a>
+                </li>
+                <!-- <li routerLinkActive="active">
+                            <a (click)="isGridView = false" mat-raised-button routerLink="/OM/audits/summary">
+                                <mat-icon>place</mat-icon> Summary Report
+                            </a>
+                        </li> -->
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+            <div class="w-100 flex-p">
+                <div class="pills w-100 flex-p">
+                  <ul class="nav nav-pills " style="float: right;">
+                      <li routerLinkActive="active">
+                          <p-selectButton [options]="types" [(ngModel)]="selectedType" (onChange)="onToggleChange($event)"></p-selectButton>
+                     </li>
+  
+                    <li routerLinkActive="active">
+                     
+            <button mat-raised-button class="add-hover pull-right" style="background:#229494;color: white;"
+            (click)="openObservationDialog(null)">
+            <mat-icon>add</mat-icon>&nbsp;Add
+            Observation
+          </button>
+                    </li>
+                    <li routerLinkActive="active">
+                        <button mat-raised-button class="add-hover btn-success pull-right"
+                        style="background-color: #336699!important">Download Audit Report</button>
+                    </li>
+                    <li routerLinkActive="active">
+                        <button mat-raised-button class="add-hover btn-success pull-right"
+                        style="margin-right: 10px;background-color: #336699!important" (click)="openEmailDialog(null)">Email
+                        Report</button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+  
+        </div>
+      </div>
+  
+  
+  
+  
+      <div class="col-md-12" style="background: #fff;padding: 16px;">
+  
+        <div class="col-md-6">
+          <div class="col-md-12 padding-0">
+             <table class="table navigation-table">
+                  <tr>
+                    <td class="left-btn" (click)="navigateLeft()">
+                      <span class="mat-button-wrapper">
+                        <mat-icon class="mat-icon material-icons" role="img" aria-hidden="true">keyboard_arrow_left
+                        </mat-icon>
+                      </span>
+                    </td>
+                    <td style="width: 18px;"></td>
+                    <td class="main-category-content">{{mainCategory}}</td>
+                    <td style="width: 18px;"></td>
+                    <td class="right-btn"  (click)="navigateRight()">
+                        <span class="mat-button-wrapper">
+                          <mat-icon class="mat-icon material-icons" role="img" aria-hidden="true">keyboard_arrow_right
+                          </mat-icon>
+                        </span>
+                      </td>
+                  </tr>
+             </table>
+          </div>
+          <div class="col-md-12 padding-0">
+  
+  
+          <p-accordion (onOpen)="onTabOpen($event)">
+              <p-accordionTab *ngFor="let item of activeSecondLevelData" header="{{item.text}}">
+                 
+            <table class="table table-striped observations-tbl">
+                <tbody>
+                  <tr (click)="showActionsBlock(i)" *ngFor="let item of thirdLevelData; let i=index;">
+                    <td>{{item.id}}</td>
+                    <td>{{item.text}}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              </p-accordionTab>
+          </p-accordion>
+          </div>
+        </div>
+  
+        <div class="col-md-6">
+          <div class="col-md-12" *ngIf="!sowInfo && !noData" style="border:1px solid #ccc;    padding-top: 10px;
+            padding-bottom: 10px;background-color:gray;    min-height: 505px;text-align: center;
+      color: #fff;">
+            <h4>Please click on any observation to upload documents and manage action items. </h4>
+          </div>
+          <div class="col-md-12 swing" *ngIf="sowInfo" style="border:1px solid #ccc;    padding-top: 10px;
+            padding-bottom: 10px;">
+            <h4>Selected Observation : </h4>
+            <p style="font-size: 15px;
+            font-weight: 500;">{{selectedObservation}}</p>
+            <div class="pills w-100 flex-p" style="padding: 19px 0px !important;">
+              <ul class="nav nav-pills ">
+                <li routerlinkactive="active" [ngClass]="{'active': observations === true}">
+                  <a (click)="observation()" style="margin-right: 8px; padding: 0px 10px;" mat-raised-button="gray"
+                    class="remove_top_bottom_padding mat-raised-button" tabindex="0" aria-disabled="false">
+                    <span class="mat-button-wrapper">
+                      <mat-icon class="mat-icon material-icons" role="img" aria-hidden="true">grid_on
+                      </mat-icon>
+                      Observations
+                    </span>
+                    <div class="mat-button-ripple mat-ripple" matripple=""></div>
+                    <div class="mat-button-focus-overlay"></div>
+                  </a>
+                </li>
+                <li routerlinkactive="active" [ngClass]="{'active': docs === true}">
+                  <a (click)="docsview()" style="margin-right: 8px; padding: 0px 10px;" mat-raised-button=""
+                    class="remove_top_bottom_padding mat-raised-button" tabindex="0" aria-disabled="false">
+                    <span class="mat-button-wrapper">
+                      <mat-icon class="mat-icon material-icons" role="img" aria-hidden="true">attachment
+                      </mat-icon>
+                      Docs
+                    </span>
+                    <div class="mat-button-ripple mat-ripple" matripple=""></div>
+                    <div class="mat-button-focus-overlay"></div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+  
+            <div class="col-md-12 padding-0" style="padding-top: 10px !important;" *ngIf="observations">
+              <div class="form-group">
+                <label class="control-label">Auditor Remarks : </label>
+                <textarea class="form-control" rows="2"> </textarea>
+              </div>
+              <div class="form-group">
+                <label class="control-label">Auditee Remarks : </label>
+                <textarea class="form-control" rows="2"> </textarea>
+              </div>
+              <div class="w-100 flex-p">
+                <button mat-raised-button class="add-hover pull-right" style="background:#229494;color: white;
+              margin-bottom: 12px;" (click)="openActionDialog()">
+                  <mat-icon>add</mat-icon>&nbsp;Add Action Item
+                </button>
+              </div>
+  
+              <table class="table table-bordered table-striped">
+                <thead>
+                  <th style="width:50%;">Action Item #</th>
+                  <th>Assigned To</th>
+                  <th>Due Date</th>
+                  <th>Status</th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let action of actions;">
+                    <td>{{action.item_no}}</td>
+                    <td>{{action.assigned_to}}</td>
+                    <td>{{action.due_date}}</td>
+                    <td>{{action.status}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+  
+            <div class="col-md-12 padding-0" style="padding-top: 10px !important;" *ngIf="docs">
+                <div class="w-100 flex-p">
+                    <button mat-raised-button class="add-hover pull-right" style="background:#229494;color: white;
+                  margin-bottom: 12px;" (click)="openDocDialog()">
+                      <mat-icon>add</mat-icon>&nbsp;Add Doc
+                    </button>
+                  </div>
+  
+              <table class="table table-bordered table-striped">
+                <thead>
+                  <th>Observation</th>
+                  <th>Document Title</th>
+                  <th>Uploaded Date</th>
+                  <th>Uploaded By</th>
+                  <th>Download</th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let action of docsData;">
+                    <td>{{action.observation}}</td>
+                    <td>{{action.title}}</td>
+                    <td>{{action.uploaded_at}}</td>
+                    <td>{{action.uploaded_by}}</td>
+                    <td style="text-align: center;"><a title="Click to download" href="javascript:void(0)"><i class="fa fa-download" aria-hidden="true"></i></a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+  
+          </div>
+        </div>
+  
+      </div>
+  
+    </div>
+  </div>

@@ -1,0 +1,59 @@
+<div fxLayout="row wrap" #resizedDiv>
+    <div class="flex-p w-100">
+      <div class="row" style="margin-bottom:14px;">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+          <div class="w-100 flex-p">
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+          <div class="w-100 flex-p">
+            <button mat-raised-button class="add-hover pull-right" style="background:#229494;color: white;" (click)="openDiaryDialog(null)"><mat-icon>add</mat-icon>&nbsp;Add
+            Item</button>
+            <button mat-raised-button class="add-hover pull-right mr-4" style="background:#229494;color: white;" (click)="openDiaryDialog1(null)">Assign</button>
+          </div>
+        </div>
+      </div>
+  
+  
+      <div class="table-responsive">
+          <table id="example2" class="table table-bordered table-hover table-striped">
+              <thead class="tbl-head">
+                  <tr class="tr-grid-header">
+                      <th class="text-center">Select</th>
+                      <th>Action Item</th>
+                      <th>Due date</th>
+                      <th>Assigned Role Owner</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let item of tableList">
+                      <td class="text-center"><mat-checkbox></mat-checkbox></td>
+                      <td>{{item.actionItem}}</td>
+                      <td>{{item.date}}</td>
+                      <td>{{item.roleOwner}}</td>
+                      <td>{{item.status}}</td>
+                      <td>
+                          <a (click)="openDiaryDialog(item)" style="margin-right: 10px; cursor: pointer;">
+                              <i title="Edit Observation" class="fa fa-edit"></i>
+                          </a>
+                          <a mwlConfirmationPopover
+                          [popoverTitle]="popoverTitle"
+                          [popoverMessage]="popoverMessage"
+                          placement="left"
+                          (confirm)="deleteObservation()"
+                          (cancel)="cancelClicked = true">
+                              <i style="cursor: pointer;" title="Delete Observation" class="fa fa-trash red"></i>
+                          </a>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+  
+      </div>
+  
+  
+    </div>
+  </div>
+    

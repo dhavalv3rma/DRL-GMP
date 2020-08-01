@@ -1,0 +1,117 @@
+<div fxLayout="row wrap">
+    <div class="w-100">
+
+
+        <div>
+            <div fxLayout="row wrap" style="margin-top:-3px;">
+                <div class="table-responsive w-100 flex-p">
+                    <table id="example2" class="table table-bordered table-hover">
+                        <thead class="tbl-head">
+                            <tr class="tr-grid-header">
+                                <th class="min-width85" >Quote Number</th>
+                                <th>Survey</th>
+                                <th>Client</th>
+                                <th>Quote Admin</th>
+                                <th>Account Manager</th>
+                                <th class="min-width85">Received Date</th>
+                                <th class="min-width85">Qualified Date</th>
+                                <th class="min-width85">Quoted Date</th>
+                                <th class="min-width85">Decision Date</th>
+                                <th class="text-center">Timeline</th>
+                                <th class="text-center">Quoted ($)</th>
+                                <th class="text-center">Awarded ($)</th>
+                                <th style="min-width: 110px;">Phone</th>
+                                <th class="text-center">Contact(s)</th>
+                                <th>Municipality</th>
+                                <th>City</th>
+                                <th>Docs</th>
+                                <th>Potential</th>
+                                <th>Stage</th>
+                                <th>Status</th>
+                                <!-- <th>Due Date</th> -->
+                                <th  style="min-width: 110px;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of clients">
+                                    <td class="inner-screen" (click)="openleadDialog(null)">{{item.quoteNumber}}</td>
+                                <td>{{item.subject}}</td>
+                                <td>{{item.clientName}}</td>
+                                <td>{{item.quoteAdmin}}</td>
+                                <td>{{item.contactperson}}</td>
+                                <td>{{item.date}}</td>
+                                <td>{{item.date}}</td>
+                                <td>{{item.date}}</td>
+                                <td>{{item.date}}</td>
+                                <td class="text-center"><span class="inner-screen">{{item.timeline}}</span></td>
+                                <td style="text-align:center!important">{{item.quotedamt}}</td>
+                                <td style="text-align:center!important">{{item.awardedamt}}</td>
+                                <td>{{item.phone}}</td>
+                                <td class="text-center"><span class="inner-screen">{{item.timeline}}</span></td>
+                                <td>{{item.city}}</td>
+                                <td>{{ item.city }}</td>
+                                <td style="text-align: center!important">
+                                    <a class="inner-screens">{{item.docs}}</a>
+                                </td>
+                                <td>
+                                    <span class="change-icon" [matMenuTriggerFor]="menustage" #menuTrigger="matMenuTrigger">
+                                        <i class="fa fa-circle dot {{item.colorCode}}" style="color:#53a508;margin-right: 26px;"></i>
+                                        <i class="fa fa-chevron-circle-down dot dot-arrow {{item.colorCode}}" style="color:#53a508;margin-right: 26px;"></i>
+                                    </span>
+                                    <br>
+                                    <mat-menu #menustage="matMenu">
+                                        <span mat-menu-item class="mat-color-menu">
+                                            <i class="fa fa-circle dot-menu Green"></i>
+                                            &nbsp;&nbsp;Fast</span>
+                                        <span mat-menu-item class="mat-color-menu">
+                                            <i class="fa fa-circle dot-menu Blue"></i>
+                                            &nbsp;&nbsp;Moderate</span>
+                                        <span mat-menu-item class="mat-color-menu">
+                                            <i class="fa fa-circle dot-menu Gray"></i>
+                                            &nbsp;&nbsp;Slow</span>
+                                        <span mat-menu-item class="mat-color-menu">
+                                            <i class="fa fa-circle dot-menu Red"></i>
+                                            &nbsp;&nbsp;Stagnant</span>
+                                    </mat-menu>
+                                </td>
+                                <td>{{item.stage}}</td>
+                                <td class="pad-left inner-screen" style="text-align: center!important">
+                                    <a (click)="item.status = ! item.status">
+                                        <span *ngIf="!item.status" style="color:red">Inactive</span>
+                                        <span *ngIf="item.status">Active</span>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a title="Edit Quote Details" (click)="openleadDialog(null)" style="margin-right: 10px; cursor: pointer;font-size:16px!important;color:#0987e8d1">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a title="Covert to Project" style="margin-right: 10px; cursor: pointer;font-size:16px!important;color:#2f941cd1">
+                                        <i class="fa fa-arrow-circle-right"></i>
+                                    </a>
+                                    <a >
+                                        <i style="cursor: pointer;font-size:16px!important;" title="Delete Quote" class="fa fa-trash red"></i>
+                                    </a>
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- 
+        <div *ngIf='mapview'>
+            <app-map-view></app-map-view>
+        </div>
+        <div *ngIf='kanbanview'>
+            <app-kanban></app-kanban>
+        </div> -->
+
+
+    </div>
+</div>
+
+<!-- <div *ngIf="!leads" fxLayout="column" fxLayoutAlign="center center" class="lead-spinner">
+    <mat-spinner color="primary"></mat-spinner>
+</div> -->

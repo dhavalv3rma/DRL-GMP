@@ -1,0 +1,13 @@
+<div fxLayout="row wrap" #resizedDiv>
+    <div class="flex-p w-100">
+      <h4 style="margin-top:15px;">Enter concluding remarks for audit</h4>
+      <textarea rows="10" cols="150" style="border:1px solod black;"></textarea>
+      <div class="row" style="margin-top:15px;">
+        <div class="col-lg-8">
+            <button mat-raised-button class="add-hover btn-success" style="margin-right:10px;">Save</button>
+            <button mat-raised-button class="add-hover btn-success" style="margin-right:10px;background-color: #336699!important">Download Audit Closurte Report</button>
+            <button mat-raised-button class="add-hover btn-success" style="margin-right:10px;background-color: #336699!important" (click)="openEmailDialog(null)">Email Report</button>
+        </div>
+      </div>
+    </div>
+</div>

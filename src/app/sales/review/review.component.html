@@ -1,0 +1,259 @@
+<div fxLayout="row wrap">
+    <div class="w-100">
+
+        <div class="flex-p">
+            <div class="row wrap">
+                <div class="col-xs-12" style="margin-right:0px !important; margin-top: 15px;padding-left:0px!important;padding-right:0px!important">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <div class="pills w-100">
+                            <ul class="nav nav-pills ">
+                                <li routerlinkactive="active">
+                                    <a (click)="Pending()" [ngClass]="{'tabActive': pending === true}" style="margin-right: 8px; padding: 0px 10px;"
+                                        mat-raised-button="" class="remove_top_bottom_padding mat-raised-button"
+                                        tabindex="0" aria-disabled="false">
+                                        <span class="mat-button-wrapper" >
+                                            <mat-icon class="mat-icon material-icons" role="img" aria-hidden="true">clear_all</mat-icon>
+                                            Pending (15)
+                                        </span>
+                                        <div class="mat-button-ripple mat-ripple" matripple=""></div>
+                                        <div class="mat-button-focus-overlay"></div>
+                                    </a>
+                                </li>
+                                <li routerlinkactive="active">
+                                    <a (click)="Archives()" [ngClass]="{'tabActive': archives === true}" style="margin-right: 8px; padding: 0px 10px;"
+                                        mat-raised-button="" class="remove_top_bottom_padding mat-raised-button"
+                                        tabindex="0" aria-disabled="false">
+                                        <span class="mat-button-wrapper">
+                                            <mat-icon class="mat-icon material-icons" role="img" aria-hidden="true">blur_linear</mat-icon>
+                                            <span>Archives (35)</span>
+                                        </span>
+                                        <div class="mat-button-ripple mat-ripple" matripple=""></div>
+                                        <div class="mat-button-focus-overlay"></div>
+                                    </a>
+                                </li>
+                                <!-- <li routerlinkactive="active">
+                                    <a (click)="BandView()" [ngClass]="{'tabActive': bandview === true}" style="margin-right: 8px; padding: 0px 10px;"
+                                        mat-raised-button="" class="remove_top_bottom_padding mat-raised-button"
+                                        tabindex="0" aria-disabled="false">
+                                        <span class="mat-button-wrapper">
+                                            <mat-icon class="mat-icon material-icons" role="img" aria-hidden="true">layers</mat-icon>
+                                            Band View
+                                        </span>
+                                        <div class="mat-button-ripple mat-ripple" matripple=""></div>
+                                        <div class="mat-button-focus-overlay"></div>
+                                    </a>
+                                </li>
+                                <li routerlinkactive="active">
+                                    <a (click)="MapView()" [ngClass]="{'tabActive': mapview === true}" style="margin-right: 8px; padding: 0px 10px;"
+                                        mat-raised-button="" class="remove_top_bottom_padding mat-raised-button"
+                                        tabindex="0" aria-disabled="false">
+                                        <span class="mat-button-wrapper">
+                                            <mat-icon class="mat-icon material-icons" role="img" aria-hidden="true">place</mat-icon>
+                                            Map View
+                                        </span>
+                                        <div class="mat-button-ripple mat-ripple" matripple=""></div>
+                                        <div class="mat-button-focus-overlay"></div>
+                                    </a>
+                                </li>
+                                <li routerlinkactive="active">
+                                    <a (click)="KanbanView()" [ngClass]="{'tabActive': kanbanview === true}" style="padding: 0px 10px;"
+                                        mat-raised-button="" class="remove_top_bottom_padding mat-raised-button"
+                                        tabindex="0" aria-disabled="false">
+                                        <span class="mat-button-wrapper">
+                                            <mat-icon class="mat-icon material-icons" role="img" aria-hidden="true">swap_horiz</mat-icon>
+                                            Kanban View
+                                        </span>
+                                        <div class="mat-button-ripple mat-ripple" matripple=""></div>
+                                        <div class="mat-button-focus-overlay"></div>
+                                    </a>
+                                </li> -->
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- <div class="col-sm-6 pull-right">
+                            <button mat-raised-button class="pull-right add-hover-help btn-success-help">
+                                    <mat-icon>help_outline</mat-icon> Help
+                                </button>
+                        <button mat-raised-button class="pull-right add-hover btn-success margin-right-10" (click)="openoppurtunityDialog(null)">
+                            <mat-icon>add</mat-icon> Add Project
+                        </button>
+                        <button mat-raised-button color="primary" class="pull-right filter-hover margin-right-10"
+                            (click)="filterToggle = !filterToggle">
+                            <mat-icon>filter_list</mat-icon> Filter
+                        </button>
+                    </div> -->
+                </div>
+                <!-- <div fxLayout="row wrap" > -->
+                <div fxLayout="row wrap" *ngIf="filterToggle">
+                    <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p">
+                        <mat-card class="filter">
+                            <mat-card-content>
+                                <div class="row col-lg-12">
+                                    <div class="col-lg-2 col-md-3 col-sm-3">
+                                        <input type="text" class='select-option form-control' placeholder="From Date" onfocus="(this.type='date')"
+                                            onblur="if(this.value==''){this.type='text'}">
+                                    </div>
+                                    <div class="col-lg-2 col-md-3 col-sm-3">
+                                        <input type="text" class='select-option form-control' placeholder="To Date" onfocus="(this.type='date')"
+                                            onblur="if(this.value==''){this.type='text'}">
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <select class='select-option form-control' required [(ngModel)]='projectOptionSelected'
+                                            (ngModelChange)='onProjectOptionsSelected($event)'>
+                                            <option class='option' [ngValue]="undefined" selected disabled>--By
+                                                Client--</option>
+                                            <option class='option' *ngFor='let option of projectOptions' [value]="option">{{option}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <select class='select-option form-control' required [(ngModel)]='projectOptionSelected'
+                                            (ngModelChange)='onProjectOptionsSelected($event)'>
+                                            <option class='option' [ngValue]="undefined" selected disabled>--By
+                                                Project Manager--</option>
+                                            <option class='option' *ngFor='let option of projectOptions' [value]="option">{{option}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <select class='select-option form-control' required [(ngModel)]='projectOptionSelected'
+                                            (ngModelChange)='onProjectOptionsSelected($event)'>
+                                            <option class='option' [ngValue]="undefined" selected disabled>--By
+                                                Project--</option>
+                                            <option class='option' *ngFor='let option of projectOptions' [value]="option">{{option}}</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-lg-2">
+                                        <button type="button" class="btn btn-success add-hover pull-right">Search</button>
+                                    </div>
+                                    <div class="col-lg-2">
+                                    </div>
+                                </div>
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<div *ngIf='pending' class="col-sm-12" style="padding-left: 0!important;">
+    <div fxLayout="row wrap" style="margin-top:-3px;">
+        <div class="table-responsive w-100 flex-p" style="padding-left:0px!important;padding-right:0px!important">
+            <table id="example2" class="table table-bordered table-hover">
+                <thead class="tbl-head">
+                    <tr class="tr-grid-header">
+                        <th style="padding-left: 5px!important;">Project</th>
+                        <th style="padding-left: 5px!important;">Action</th>
+                        <th style="padding-left: 5px!important;">Job Code (Rate ($ / hr))</th>
+                        <th style="padding-left: 5px!important;">Field Staff</th>
+                        <th style="padding-left: 5px!important;">Plan Hrs</th>
+                        <th style="padding-left: 5px!important;">Actual Hrs</th>
+                        <th style="padding-left: 5px!important;">Client</th>
+                        <th style="padding-left: 5px!important;">Manager</th>
+                        <th style="padding-left: 5px!important;">Logged Date</th>
+                        <!-- <th style="padding-left: 5px!important;">Site</th>
+                        <th style="padding-left: 5px!important;">Deliverable</th>
+                        <th style="padding-left: 5px!important;">Task</th> -->
+                        <th style="padding-left: 5px!important;">Due Date</th>
+                        <th style="padding-left: 5px!important;">Notes</th>
+                        <th style="padding-left: 5px!important;">Reviewed</th>
+                        <th style="padding-left: 5px!important;">Return</th>
+
+                        <!-- <th style="padding-left: 5px!important;">Reviewed</th>
+                        <th style="padding-left: 5px!important;">Alert</th> -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of reviewpending">
+                            <td style="padding-left: 5px!important;">{{item.projectcode}}</td>
+                            <td style="padding-left: 5px!important;" >{{item.action}}</td>
+                            <td style="padding-left: 5px!important;" >{{item.jobcode}}</td>
+                            <td style="padding-left: 5px!important;" >{{item.fieldstaff}}</td>
+                            <td style="padding-left: 5px!important;text-align: center!important">{{item.planhrs}}</td>
+                            <td style="padding-left: 5px!important;text-align: center!important">{{item.actualhrs}}</td>
+                        <td style="padding-left: 5px!important;"><a [title]="item.clientname">{{item.clientcode}}</a></td>
+                        <td style="padding-left: 5px!important;"><a [title]="item.pmfullname">{{item.projectmanager}}</a></td>
+                        <!-- <td style="padding-left: 5px!important;">{{item.sites}}</td>
+                        <td style="padding-left: 5px!important;">{{item.deliverables}}</td>
+                        <td style="padding-left: 5px!important;" >{{item.task}}</td> -->
+                        <td style="padding-left: 5px!important;">{{item.datetime}}</td>
+                        <td style="padding-left: 5px!important;">{{item.duedate}}</td>
+                        <td style="padding-left: 5px!important;" class="inner-screen">Update</td>
+                        
+                        <td style="text-align: center!important">
+                            <input type="checkbox" style="margin: 3px -4px 0px 5px!important;width: 17%!important;height:20px!important;">
+                        </td>
+                        <td style="text-align: center!important">
+                            <input type="checkbox" style="margin: 3px -4px 0px 5px!important;width: 13px!important;height:20px!important;">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div *ngIf='archives' class="col-sm-12" style="padding-left: 0!important;">
+    <div fxLayout="row wrap" style="margin-top:-3px;">
+        <div class="table-responsive w-100 flex-p" style="padding-left:0px!important;padding-right:0px!important">
+            <table id="example2" class="table table-bordered table-hover">
+                <thead class="tbl-head"> 
+                    <tr class="tr-grid-header">
+                        <th style="padding-left: 5px!important;">Project</th>
+                        <th style="padding-left: 5px!important;">Action</th>
+                        <th style="padding-left: 5px!important;">Job Code (Rate ($ / hr))</th>
+                        <th style="padding-left: 5px!important;">Field Staff</th>
+                        <th style="padding-left: 5px!important;">Plan</th>
+                        <th style="padding-left: 5px!important;">Actual</th>
+                        <th style="padding-left: 5px!important;">Client</th>
+                        <th style="padding-left: 5px!important;">Manager</th>
+                        <!-- <th style="padding-left: 5px!important;">Site</th>
+                        <th style="padding-left: 5px!important;">Deliverable</th>
+                        <th style="padding-left: 5px!important;">Task</th> -->
+                        <th style="padding-left: 5px!important;">Date</th>
+                        <th style="padding-left: 5px!important;">Due Date</th>
+                        <th style="padding-left: 5px!important;">Notes</th>
+                        <th style="padding-left: 5px!important;">Reviewed</th>
+                        <th style="padding-left: 5px!important;">Reviewed On</th>
+                        <th style="padding-left: 5px!important;">Reviewed By</th>
+                        <!-- <th style="padding-left: 5px!important;">Reviewed</th> -->
+                        <!-- <th style="padding-left: 5px!important;">Alert</th> -->
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of reviewarchives">
+                            <td style="padding-left: 5px!important;">{{item.projectcode}}</td>
+                            <td style="padding-left: 5px!important;">{{item.action}}</td>
+                            <td style="padding-left: 5px!important;">{{item.jobcode}}</td>
+                            <td style="padding-left: 5px!important;">{{item.fieldstaff}}</td>
+                            <td style="padding-left: 5px!important;text-align: center!important">{{item.planhrs}}</td>
+                            <td style="padding-left: 5px!important;text-align: center!important">{{item.actualhrs}}</td>
+                        <td style="padding-left: 5px!important;"><a [title]="item.clientname">{{item.clientcode}}</a></td>
+                        <td style="padding-left: 5px!important;"><a [title]="item.pmfullname">{{item.projectmanager}}</a></td>
+                        <!-- <td style="padding-left: 5px!important;">{{item.sites}}</td>
+                        <td style="padding-left: 5px!important;">{{item.deliverables}}</td>
+                        <td style="padding-left: 5px!important;">{{item.task}}</td> -->
+                        <td style="padding-left: 5px!important;">{{item.datetime}}</td>
+                        <td style="padding-left: 5px!important;">{{item.duedate}}</td>
+                        <td style="padding-left: 5px!important;" class="inner-screen">View</td>
+                        <td style="text-align: center!important">
+                                <!-- <mat-icon style="color:#09b4c5">note_add</mat-icon> -->
+                                <!-- <mat-icon style="color:#f54242">notifications</mat-icon> -->
+                            <input type="checkbox" style="margin: 3px -4px 0px 5px!important;width: 17%!important;height:20px!important;" checked>
+                        </td>
+                        <td style="padding-left: 5px!important;">{{item.reviewedon}}</td>
+                        <td style="padding-left: 5px!important;"><a [title]="item.reviewfullname">{{item.reviewedby}}</a></td>
+                        
+                        <!-- <td style="text-align: center!important"><a class="inner-screen">View</a></td>
+                        <td style="padding-left: 5px!important;"><input type="checkbox" style="margin:6px 0 0 18px" checked></td> -->
+                        <!-- <td style="text-align: center!important"><a class="inner-screen">Send</a></td> -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

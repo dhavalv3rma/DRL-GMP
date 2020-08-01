@@ -1,0 +1,35 @@
+
+
+ul a{
+    margin-top: 10px;
+    padding: 6px 12px;
+}
+
+h4 {
+    color: #4287f5;
+    margin-bottom: 20px !important;
+}
+
+.width-100{
+    width: 100% !important;
+}
+
+.nav > li > a {
+    text-align: left !important;
+}
+
+.body a:active {
+    color: #fff !important;
+    background: #50636d!important;
+}
+
+.body a:hover {
+    color: #fff !important;
+    background: #50636d!important;
+}
+
+.app.black-light .mat-flat-button, .app.black-light .mat-raised-button, .app.black-light .mat-fab, .app.black-light .mat-mini-fab {
+    
+    color: rgba(0,0,0,.87) !important;
+    background: #ddd!important;
+}

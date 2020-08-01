@@ -1,0 +1,59 @@
+<!--This page is used to add or edit leads-->
+<div>
+    <h1 mat-dialog-title>
+        <span *ngIf="!lead.id">Add</span>
+        <span *ngIf="lead.id">Edit</span> Audit</h1>
+    <hr>
+    <div mat-dialog-content>
+        <form class="form-horizontal">
+                <div class="form-group">
+                        <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4">Unit : </label>
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                            <input type="text" class="form-control" placeholder="Enter unit" required>
+                        </div>
+                    </div>
+            <div class="form-group">
+                <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4">Location : </label>
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                    <input type="text" class="form-control" placeholder="Enter location" required>
+                </div>
+            </div>
+            <div class="form-group">
+                    <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4" for="pwd">Scheduled From Date : </label>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                        <div class="input-icon right">
+                            <i class="fa fa-calendar" [owlDateTimeTrigger]="dt1"></i>
+                            <input class="form-control" placeholder="MM/DD/YYYY" class="form-control" id="dob" [(ngModel)]="dateTime1" [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" name="dt1">
+                            <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+                        </div>
+                    </div>
+            </div>
+            <div class="form-group">
+                    <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4" for="pwd">Scheduled To Date : </label>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                        <div class="input-icon right">
+                            <i class="fa fa-calendar" [owlDateTimeTrigger]="dt1"></i>
+                            <input class="form-control" placeholder="MM/DD/YYYY" class="form-control" id="dob" [(ngModel)]="dateTime1" [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" name="dt1">
+                            <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+                        </div>
+                    </div>
+            </div>
+            <div class="form-group">
+                    <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4" for="pwd">Remarks : </label>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                        <div class="input-icon right">
+                            <textarea class="form-control" placeholder="Enter remarks" class="form-control" id="dob" ></textarea>
+                            <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+                        </div>
+                    </div>
+            </div>
+            
+        </form>
+    </div>
+    <mat-dialog-actions align="end">
+        <button mat-raised-button class="btn-success">Save</button>
+        <button mat-raised-button class="add-dark-hover btn-default" (click)="close()">Cancel</button>
+    </mat-dialog-actions>
+
+
+</div>

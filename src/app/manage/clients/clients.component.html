@@ -1,0 +1,185 @@
+<div fxLayout="row wrap">
+    <div class="w-100">
+        <div class="flex-p">
+            <div class="row wrap">
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                    <div class="pills w-100 flex-p">
+                        <ul class="nav nav-pills ">
+                            <li routerLinkActive="active">
+                                <a (click)="isGridView = true" mat-raised-button routerLink="/OM/audits/gridview">
+                                    <mat-icon>grid_on</mat-icon> Grid View
+                                </a>
+                            </li>
+                            <!-- <li routerLinkActive="active">
+                                <a (click)="isGridView = false" mat-raised-button routerLink="/OM/audits/mapview">
+                                    <mat-icon>place</mat-icon> Map View
+                                </a>
+                            </li> -->
+                            <li routerLinkActive="active">
+                                <a (click)="isGridView = false" mat-raised-button routerLink="/OM/audits/calenderview">
+                                    <mat-icon>place</mat-icon> Calender View
+                                </a>
+                            </li>
+                            <li routerLinkActive="active">
+                                <a (click)="isGridView = false" mat-raised-button routerLink="/OM/audits/kanbanview">
+                                    <mat-icon>place</mat-icon> Kanban View
+                                </a>
+                            </li>
+                            <!-- <li routerLinkActive="active">
+                                <a (click)="isGridView = false" mat-raised-button routerLink="/OM/audits/summary">
+                                    <mat-icon>place</mat-icon> Summary Report
+                                </a>
+                            </li> -->
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-4" style="margin-right:0px !important">
+                    <div class="w-100 flex-p">
+                        <a (click)="openHelpVideo(null)" mat-raised-button class="pull-right add-hover-help btn-success-help" style="margin-left: 10px;background-color: yellow">
+                            <mat-icon>help_outline</mat-icon> Help
+                        </a>
+                        <!-- <button *ngIf="isGridView" (click)="opengridColDialog(null)" mat-raised-button class="pull-right btn-primary" style="margin-left: 10px;color:white; background:#3b7bb8">
+                            <mat-icon>view_column</mat-icon> Grid Columns
+                        </button> -->
+                        <button mat-raised-button class="pull-right add-hover btn-success" (click)="openleadDialog(null)">
+                            <mat-icon>add</mat-icon> Add Audit
+                        </button>
+                        <!-- <button mat-raised-button color="primary" class="pull-right filters-hover margin-right-10" (click)="filterToggle = !filterToggle">
+                            <mat-icon>filter_list</mat-icon> Filter
+                        </button> -->
+                        <!-- <button *ngIf="isGridView" mat-raised-button color="primary" style="min-width: 110px;" class="pull-right filters-hover margin-right-10">
+                            Next<mat-icon>skip_next</mat-icon>
+                        </button>
+                        <button *ngIf="isGridView" mat-raised-button color="primary" class="pull-right filters-hover margin-right-10">
+                            <mat-icon>skip_previous</mat-icon> Previous
+                        </button> -->
+                        <!-- <a class="pull-right" style="font-size: 15px; margin-left:10px" >
+                                Next<i style="font-size: 25px;" class="fa fa-angle-double-right" aria-hidden="true"></i> 
+                        </a>
+                        <a class="pull-right" style="font-size: 15px; margin-right:10px">
+                            <i style="font-size: 25px;" class="fa fa-angle-double-left" aria-hidden="true"></i>Previous
+                        </a> -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-xs-6">
+            </div>
+        </div>
+        <div fxLayout="row wrap" *ngIf="filterToggle">
+            <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p w-100">
+
+
+                <mat-card class="filter">
+                    <mat-card-content>
+                        <div class="row col-sm-12">
+                            <div class="col-sm-4">
+                                <div class="col-sm-4">Client Type</div>
+                                <div class="col-sm-8">
+                                    <mat-select class='select-option form-control' placeholder="--Search by Client Type--">
+                                        <mat-option [value]="1">Engineer/Engineering firm</mat-option>
+                                        <mat-option [value]="2">Private land owner</mat-option>
+                                        <mat-option [value]="3">Planner</mat-option>
+                                        <mat-option [value]="4">Business</mat-option>
+                                        <mat-option [value]="5">Architect/architect firm</mat-option>
+                                        <mat-option [value]="6">Government</mat-option>
+                                        <mat-option [value]="7">Home builder</mat-option>
+                                        <mat-option [value]="8">Law firm</mat-option>
+                                        <mat-option [value]="9">Utility company</mat-option>
+                                        <mat-option [value]="10">Surveyor/Survey firm</mat-option>
+                                        <mat-option [value]="11">Developer</mat-option>
+                                    </mat-select>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="col-sm-4">Municipality</div>
+                                <div class="col-sm-8">
+                                    <mat-select class='select-option form-control' placeholder="--Search by Municipality--">
+                                        <mat-option [value]="1">Toronto</mat-option>
+                                        <mat-option [value]="2">Ottawa</mat-option>
+                                        <mat-option [value]="3">Mississauga</mat-option>
+                                        <mat-option [value]="4">Brampton</mat-option>
+                                        <mat-option [value]="5">Hamilton</mat-option>
+                                    </mat-select>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="col-sm-4">Status</div>
+                                <div class="col-sm-8">
+                                    <mat-select class='select-option form-control' placeholder="--Search by Status--">
+                                        <mat-option [value]="1">Any</mat-option>
+                                        <mat-option [value]="2">Active</mat-option>
+                                        <mat-option [value]="3">Inactive</mat-option>
+                                    </mat-select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row col-sm-12" style="margin-top:20px">
+                            <div class="col-sm-4">
+                                <div class="col-sm-4">Date Range For</div>
+                                <div class="col-sm-8">
+                                    <mat-select class='select-option form-control' placeholder="--Select Date Type--">
+                                        <mat-option [value]="1">Created Date</mat-option>
+                                        <mat-option [value]="2">Last Activity Date</mat-option>
+                                    </mat-select>
+                                </div>
+
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="col-sm-4">From Date</div>
+                                <div class="col-sm-8">
+                                    <input type="text" class='select-option form-control' placeholder="From Date" onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="col-sm-4">To Date</div>
+                                <div class="col-sm-8">
+                                    <input type="text" class='select-option form-control' placeholder="To Date" onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row col-sm-12" style="margin-top:20px">
+                            <div class="col-sm-4">
+                                <div class="col-sm-4">Keyword</div>
+                                <div class="col-sm-8">
+                                    <input class="form-control" placeholder="Enter keyword" type="text">
+                                </div>
+
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="col-sm-4">Flagged</div>
+                                <div class="col-sm-8">
+                                    <mat-checkbox [checked]="false"></mat-checkbox>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <a (click)="filterToggle = !filterToggle" class="pull-right" style="font-size: 25px;">
+                                    <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                                </a>
+
+                                <button mat-raised-button class="pull-right btn-success-gray" style="margin-left: 10px;margin-right: 8px;">
+                                    <mat-icon>settings_backup_restore</mat-icon> Reset
+                                </button>
+                                <button mat-raised-button class="pull-right add-hover btn-success">
+                                    <mat-icon>cloud_download</mat-icon> Download CSV
+                                </button>
+                                <button mat-raised-button color="primary" class="pull-right filters-hover margin-right-10">
+                                    <mat-icon>youtube_searched_for</mat-icon> Search
+                                </button>
+                            </div>
+
+                        </div>
+
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+        <div>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

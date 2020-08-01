@@ -1,0 +1,25 @@
+<div fxLayout="column">
+  <mat-card class="py-5">
+      <mat-card-header fxLayoutAlign="center center">
+          <mat-card-subtitle>
+              <h2 class="mb-4">Documentation & Document Controls</h2>
+          </mat-card-subtitle>
+      </mat-card-header>
+      <div class="col-10 m-auto mt-4 w-100 h-300p">
+        <ngx-charts-bar-horizontal
+        [view]="view"
+        [scheme]="colorScheme"
+        [results]="multi"
+        [gradient]="gradient"
+        [xAxis]="showXAxis"
+        [yAxis]="showYAxis"
+        [legend]="showLegend"
+        [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel"
+        [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisLabel">
+      </ngx-charts-bar-horizontal>
+
+      </div>
+  </mat-card>
+</div>

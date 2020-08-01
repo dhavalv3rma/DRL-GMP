@@ -1,0 +1,12 @@
+
+mgl-timeline {
+    height: 450px;
+    overflow: auto;
+}
+::ng-deep mgl-timeline-entry-content{
+    height: auto !important;
+}
+
+::ng-deep .test{
+    height: auto !important;
+}

@@ -1,0 +1,47 @@
+<!-- <div fxLayout="row wrap" #resizedDiv> -->
+        <div style="margin-top:12px;"> 
+            <a mat-raised-button class="pull-right add-hover btn-success" target="_blank" routerLink="/salesglobal/calender">
+                <mat-icon>add</mat-icon> Add
+                Event
+            </a>
+        </div>
+        <!-- <div class="flex-p w-100"> -->
+            <div class="table-responsive">
+                <table id="example2" style="margin-top: 14px" class="table table-bordered table-hover table-striped">
+                    <thead class="tbl-head">
+                        <tr class="tr-grid-header">
+                            <th>Meeting Type</th>
+                            <th> Contact Person</th>
+                            <!-- <th>Location</th>
+                            <th>Campaign</th>
+                            <th>Prospect</th> -->
+                            <th>Meeting Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of tableList">
+                            <td>{{item.type}}</td>
+                            <td>{{item.person}}</td>
+                            <!-- <td>{{item.location}}</td>
+                            <td>{{item.campaign}}</td>
+                            <td>{{item.prospect}}</td> -->
+                            <td>{{item.date}}</td>
+                            <td>
+                                <a title="Edit User" style="margin-right: 10px; cursor: pointer;" target="_blank" routerLink="/salesglobal/calender">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                                <a >
+                                    <i style="cursor: pointer;" title="Delete User" class="fa fa-trash red"></i>
+                                </a>
+
+                            </td>
+    
+                        </tr>
+                    </tbody>
+                </table>
+    
+            </div>
+        <!-- </div> -->
+    
+    <!-- </div> -->

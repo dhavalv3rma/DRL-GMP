@@ -1,0 +1,62 @@
+<div fxLayout="row wrap" #resizedDiv>
+    <div class="flex-p w-100">
+      <div class="row" style="margin-bottom:14px;">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+          <div class="w-100 flex-p">
+              <div class="pills w-100 flex-p">
+                  <ul class="nav nav-pills ">
+                      <li routerLinkActive="active">
+                          <a (click)="isGridView = true" mat-raised-button routerLink="/OM/sales/auditdashboard/observations/critical">
+                              <mat-icon>grid_on</mat-icon> Critical
+                          </a>
+                      </li>
+                      <!-- <li routerLinkActive="active">
+                          <a (click)="isGridView = false" mat-raised-button routerLink="/OM/audits/mapview">
+                              <mat-icon>place</mat-icon> Map View
+                          </a>
+                      </li> -->
+                      <li routerLinkActive="active">
+                          <a (click)="isGridView = false" mat-raised-button routerLink="/OM/sales/auditdashboard/observations/moderate">
+                              <mat-icon>place</mat-icon> Moderate
+                          </a>
+                      </li>
+                      <li routerLinkActive="active">
+                          <a (click)="isGridView = false" mat-raised-button routerLink="/OM/sales/auditdashboard/observations/low">
+                              <mat-icon>place</mat-icon> Low
+                          </a>
+                      </li>
+                      <!-- <li routerLinkActive="active">
+                          <a (click)="isGridView = false" mat-raised-button routerLink="/OM/audits/summary">
+                              <mat-icon>place</mat-icon> Summary Report
+                          </a>
+                      </li> -->
+                  </ul>
+              </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+          <div class="w-100 flex-p">
+            <button mat-raised-button class="add-hover pull-right" style="background:#229494;color: white;" (click)="openObservationDialog(null)"><mat-icon>add</mat-icon>&nbsp;Add
+            Observation</button>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="margin-bottom:10px;">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <div class="w-100 flex-p">
+              </div>
+            </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <div class="w-100 flex-p">
+                <button mat-raised-button class="add-hover btn-success pull-right" style="background-color: #336699!important">Download Audit Report</button>
+                <button mat-raised-button class="add-hover btn-success pull-right" style="margin-right: 10px;background-color: #336699!important" (click)="openEmailDialog(null)">Email Report</button>
+              </div>
+          </div>
+      </div>
+  
+  
+  
+  
+    </div>
+  </div>
+    

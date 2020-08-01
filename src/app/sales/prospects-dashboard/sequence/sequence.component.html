@@ -1,0 +1,151 @@
+<div fxLayout="row wrap" style="margin-top: -15px;padding: 0px 5px 0px 5px;">
+        <div class="w-100 flex-p">
+                <p style="margin-top:5px;">
+                        <span class="mr-8" style="font-size: 18px;font-weight: bold;">Add Update:</span>
+                    </p>
+  <form class="form-horizontal" action="/action_page.php" style="margin-top: 20px;margin-bottom: 15px;" >
+      <div class="form-group">
+          <!-- <label class="control-label col-sm-4">Content:</label> -->
+          <div class="col-sm-12">
+              <textarea rows="4" class="form-control txtarea" id="content" placeholder="Write here"></textarea>
+          </div>
+      </div>
+      <div class="form-group">
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                    <select class='select-option form-control' required [(ngModel)]='locationOptionSelected' (ngModelChange)='onLocationOptionsSelected($event)' name="communication">
+                            <option class='option' [ngValue]="undefined" selected disabled>--Mode of Communication--</option>
+                            <option class='option' *ngFor='let option of locationOptions' [value]="option">{{option}}</option>
+                     </select>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                    <select class='select-option form-control' required [(ngModel)]='communicationOptionSelected' (ngModelChange)='onCommunicationOptionsSelected($event)' name="communication">
+                            <option class='option' [ngValue]="undefined" selected disabled>--Communication Type--</option>
+                            <option class='option' *ngFor='let option of communicationOptions' [value]="option">{{option}}</option>
+                     </select>
+            </div>
+              <!-- <mat-radio-group>
+                      <div class="col-sm-1" style="margin-right: 40px;">
+                              <mat-radio-button value="1">Email</mat-radio-button>
+                      </div>
+                      <div class="col-sm-1" style="margin-right: 40px;">
+                              <mat-radio-button value="2">Call</mat-radio-button>
+                      </div>
+                      <div class="col-sm-1" style="margin-right: 40px;">
+                          <mat-radio-button value="1">Text</mat-radio-button>
+                      </div>
+                      <div class="col-sm-1" style="margin-right: 40px;">
+                          <mat-radio-button value="2">Linkedin</mat-radio-button>
+                      </div>
+              </mat-radio-group> -->
+              
+                <div class="col-lg-3 col-md-3 col-sm-3">
+                        <!-- <input class="form-control" placeholder="MM/DD/YYYY" [(ngModel)]="dateTime1" [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" name="dt1">         <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time> -->
+                        <div class="input-icon right">
+                                <i class="fa fa-calendar" [owlDateTimeTrigger]="dt1"></i>
+                                <input class="form-control" placeholder="MM/DD/YYYY" class="form-control" id="dob" [(ngModel)]="dateTime1" [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" name="dt1">
+                                <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+                            </div>
+                </div>
+              
+                <div class="col-sm-2" style="margin-top: -4px;margin-right: 50px;">
+                <button type="button" class="add-hover btn btn-success"><i class="fa fa-paper-plane"></i>Comment</button>
+                </div>
+      </div>
+      <!-- <div class="form-group">
+            <mat-radio-group>
+                    
+                    <div class="col-sm-2" style="width: 152px;">
+                            <mat-radio-button value="1">Incoming</mat-radio-button>
+                    </div>
+                    <div class="col-sm-2">
+                            <mat-radio-button value="2">Outgoing</mat-radio-button>
+                    </div>
+                    <div class="col-sm-2"></div>
+                    
+            </mat-radio-group>
+            
+         
+    </div> -->
+          <!-- <div class="form-group">
+          <label class="control-label col-sm-4">Name:</label>
+          <div class="col-sm-6">
+              <input type="email" class="form-control" id="email" placeholder="Enter notes name">
+          </div>
+      </div> -->
+      
+      <!-- <button type="button" class="btn btn-primary" (click)="goBack()" style="float: right;"><span class="glyphicon glyphicon-chevron-left"></span>Back</button> -->
+  </form>
+  <!-- <div class="row" style="margin-top: 100px">
+      <div class="col-md-6"></div>
+  <div class="col-md-6" style="background-color:  #66ffff; border-radius: 10px">
+      <div style="margin-top:10px;margin-bottom: 20px "><i class="fa fa-linkedin"></i>&nbsp;&nbsp;&nbsp;<b>LinkedIn invitation</b><b style="float:right;">Mon, 5 Nov 2018 08:54</b></div>
+      <p>Hello *****, I am keen to meet you in person about your product / custom software development outsourcing?  I am located in Vancouver with business in 9 countries and offshore development in India. Please accept my invite.</p>
+  </div>
+  </div>
+  <br>
+  
+  <div class="row">
+          <div class="col-md-6"></div>
+          <div class="col-md-6" style="background-color: #99ff66; border-radius: 10px">
+              <div style="margin-bottom: 20px;margin-top: 10px;"><i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;<b>Email</b><b style="float:right;">Tue, 13 Nov 2018 21:19</b></div>
+              <div style="margin-bottom: 10px">Hello ****,</div>
+                     <p> I would like to explore possibilities of serving your needs for software product/project development outsourcing. My whole idea is that you don’t start custom from scratch and we just modify what we have to give you exactly what you need. So it is custom but at lower cost and it is quick.</p>
+                      <div style="margin-top:15px;margin-bottom: 10px">Does any time this week suit you for an in-person meeting?</div>
+              
+          
+   </div>
+   </div>
+   <div>
+  <br>
+   <div class="row" >
+          <div class="col-md-6"></div>
+          <div class="col-md-6" style="background-color: #94b8b8; border-radius: 10px">
+              <div style="margin-bottom: 20px;margin-top: 10px;"><i class="fa fa-comments"></i>&nbsp;&nbsp;&nbsp;<b>Text-message</b><b style="float:right;">Thu, 22 Nov 2018 13:28</b></div>
+              <p>Hello Adam, I am interested to have a discussion with you on phone or in person as per your preference.  I would like to tell you about my business and ask you a few questions to explore opportunities.  Navin 604 841 9095</p>
+          </div>
+   </div>
+  </div> -->
+
+
+
+
+
+
+
+  <div fxLayout="row wrap">
+        <!-- <div class="flex-p">  -->
+          
+          
+                <p style="margin-top:3px;">
+                    <span style="font-size: 18px;font-weight: bold;">Recent Updates:</span>
+                </p>
+          <mgl-timeline [toggle]="toggle" [alternate]="alternate">
+            <mgl-timeline-entry *ngFor="let entry of entries; let i = index;" (expand)="onExpandEntry($event, i)">
+              <mgl-timeline-entry-header [class] = 'entry.headerClass' (click)="onHeaderClick($event)">
+                <div style="margin-bottom:10px;">
+                    <span class="{{entry.element}}" style="float: left">&nbsp;&nbsp;&nbsp;</span>
+                    <b style="float: left">{{entry.header}}</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span style="float:right;margin-top: -3px">&nbsp;&nbsp;&nbsp;<i class="fa fa-pencil" style="float: right !important; cursor: pointer;" (click)="openEditDialog(entry.content)">&nbsp;&nbsp;&nbsp;</i></span>&nbsp;&nbsp;&nbsp;
+                    <b style="float:right">&nbsp;&nbsp;&nbsp;{{entry.date}}</b>
+                    
+                </div>
+                
+                <div><p class="left-alignment">{{entry.content}}</p></div>
+              </mgl-timeline-entry-header>
+              
+              <mgl-timeline-entry-dot [class]="entry.class"
+              [size]="size"
+              (click)="onDotClick($event)"></mgl-timeline-entry-dot>
+              <!-- <mgl-timeline-entry-side>2018</mgl-timeline-entry-side> -->
+            </mgl-timeline-entry>
+          </mgl-timeline>
+          
+          
+        <!-- </div> -->
+      </div>
+  </div>
+  </div>
+
+
+  
+  
